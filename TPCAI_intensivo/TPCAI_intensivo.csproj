@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModuloAdministracionPersonas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloAdministracionPersonas.Designer.cs">
+      <DependentUpon>ModuloAdministracionPersonas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloEgresados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloEgresados.Designer.cs">
+      <DependentUpon>ModuloEgresados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloInscripciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloInscripciones.Designer.cs">
+      <DependentUpon>ModuloInscripciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ModuloAdministracionPersonas.resx">
+      <DependentUpon>ModuloAdministracionPersonas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloLogin.resx">
       <DependentUpon>ModuloLogin.cs</DependentUpon>
     </EmbeddedResource>

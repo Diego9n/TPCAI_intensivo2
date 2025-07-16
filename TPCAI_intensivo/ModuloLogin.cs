@@ -26,8 +26,9 @@ namespace TPCAI_intensivo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Validar validar = new Validar();
-            validar.comprobarnombre(txtUsuario.Text);
+            ModuloAdministracionPersonas moduloAdministracionPersonas = new ModuloAdministracionPersonas();
+            moduloAdministracionPersonas.Show();
+            this.Hide();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
