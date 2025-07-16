@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TPCAI_intensivo
+namespace Datos
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace TPCAI_intensivo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModuloLogin());
+            Application.Run(new Form1());
         }
     }
 }
