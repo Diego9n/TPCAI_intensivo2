@@ -10,14 +10,24 @@ using System.Windows.Forms;
 
 namespace TPCAI_intensivo
 {
-    public partial class ModuloAdministracionAlumno : Form
+    public partial class VerAlumno : Form
     {
-        public ModuloAdministracionAlumno()
+        public VerAlumno()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

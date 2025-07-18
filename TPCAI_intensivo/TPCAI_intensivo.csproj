@@ -52,6 +52,12 @@
     <Compile Include="CrearAlumno.Designer.cs">
       <DependentUpon>CrearAlumno.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrearPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearPersonal.Designer.cs">
+      <DependentUpon>CrearPersonal.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloAdministracionAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VerAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerAlumno.Designer.cs">
+      <DependentUpon>VerAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerPersonal.Designer.cs">
+      <DependentUpon>VerPersonal.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CrearAlumno.resx">
+      <DependentUpon>CrearAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearPersonal.resx">
+      <DependentUpon>CrearPersonal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloAdministracionAlumno.resx">
       <DependentUpon>ModuloAdministracionAlumno.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +150,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VerAlumno.resx">
+      <DependentUpon>VerAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerPersonal.resx">
+      <DependentUpon>VerPersonal.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

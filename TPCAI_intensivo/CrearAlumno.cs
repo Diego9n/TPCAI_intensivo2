@@ -16,5 +16,10 @@ namespace TPCAI_intensivo
         {
             InitializeComponent();
         }
+
+        private void CrearAlumno_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
