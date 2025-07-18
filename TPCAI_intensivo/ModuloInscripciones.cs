@@ -16,5 +16,15 @@ namespace TPCAI_intensivo
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ModuloInscripciones_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

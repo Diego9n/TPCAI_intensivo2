@@ -6,32 +6,25 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Negocio;
 using System.Windows.Forms;
 
 namespace TPCAI_intensivo
 {
-    public partial class ModuloLogin : Form
+    public partial class ModuloLiquidiacionSueldo : Form
     {
-        public ModuloLogin()
+        public ModuloLiquidiacionSueldo()
         {
             InitializeComponent();
         }
 
-        private void ModuloLogin_Load(object sender, EventArgs e)
-        {
-            
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-       
+            
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+
         }
     }
 }

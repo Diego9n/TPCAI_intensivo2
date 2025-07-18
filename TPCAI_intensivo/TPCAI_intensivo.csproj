@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModuloAdministracionPersonas.cs">
+    <Compile Include="CrearAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModuloAdministracionPersonas.Designer.cs">
-      <DependentUpon>ModuloAdministracionPersonas.cs</DependentUpon>
+    <Compile Include="CrearAlumno.Designer.cs">
+      <DependentUpon>CrearAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloAdministracionAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloAdministracionAlumno.Designer.cs">
+      <DependentUpon>ModuloAdministracionAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloAdministracionPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloAdministracionPersonal.Designer.cs">
+      <DependentUpon>ModuloAdministracionPersonal.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloEgresados.cs">
       <SubType>Form</SubType>
@@ -64,19 +76,46 @@
     <Compile Include="ModuloInscripciones.Designer.cs">
       <DependentUpon>ModuloInscripciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloLiquidiacionSueldo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloLiquidiacionSueldo.Designer.cs">
+      <DependentUpon>ModuloLiquidiacionSueldo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuloLogin.Designer.cs">
       <DependentUpon>ModuloLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="OpcionAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpcionAdministrador.Designer.cs">
+      <DependentUpon>OpcionAdministrador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ModuloAdministracionPersonas.resx">
-      <DependentUpon>ModuloAdministracionPersonas.cs</DependentUpon>
+    <EmbeddedResource Include="ModuloAdministracionAlumno.resx">
+      <DependentUpon>ModuloAdministracionAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloAdministracionPersonal.resx">
+      <DependentUpon>ModuloAdministracionPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloEgresados.resx">
+      <DependentUpon>ModuloEgresados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloInscripciones.resx">
+      <DependentUpon>ModuloInscripciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloLiquidiacionSueldo.resx">
+      <DependentUpon>ModuloLiquidiacionSueldo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloLogin.resx">
       <DependentUpon>ModuloLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionAdministrador.resx">
+      <DependentUpon>OpcionAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
