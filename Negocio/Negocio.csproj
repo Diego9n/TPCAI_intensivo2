@@ -74,5 +74,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{4f90de8f-fd07-447a-8ce3-8ba957e3fcc2}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{108bdefe-b490-468b-b132-f10a9a0d2956}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

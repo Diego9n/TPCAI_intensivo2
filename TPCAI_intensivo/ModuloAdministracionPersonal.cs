@@ -28,9 +28,7 @@ namespace TPCAI_intensivo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Persona persona = new Persona();
-            persona.Nombre = txtNombre.Text;    
-            label1.Text = "Nombre: " + persona.Nombre;  
+            
 
         }
     }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4F90DE8F-FD07-447A-8CE3-8BA957E3FCC2}</ProjectGuid>
+    <ProjectGuid>{108BDEFE-B490-468B-B132-F10A9A0D2956}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Datos</RootNamespace>
-    <AssemblyName>Datos</AssemblyName>
+    <RootNamespace>Persistencia</RootNamespace>
+    <AssemblyName>Persistencia</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\WebHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -71,6 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{4f90de8f-fd07-447a-8ce3-8ba957e3fcc2}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
