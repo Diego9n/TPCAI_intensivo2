@@ -148,6 +148,7 @@
             this.Controls.Add(this.label2);
             this.Name = "CrearPersonal";
             this.Text = "CrearPersonal";
+            this.Load += new System.EventHandler(this.CrearPersonal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlumnoResponse.cs" />
     <Compile Include="CarreraResponse.cs" />
+    <Compile Include="LoginRequest.cs" />
+    <Compile Include="LoginResponse.cs" />
     <Compile Include="ProfesorResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

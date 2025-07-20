@@ -22,6 +22,7 @@ namespace TPCAI_intensivo
         {
             CargarCarreras();
             CargarProfesores();
+            CargarAlumnos();
 
         }
 
@@ -29,6 +30,20 @@ namespace TPCAI_intensivo
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+        private void CargarAlumnos()
+        {
+            Validar validador = new Validar();
+            List<AlumnoDto> alumnos = validador.ObtenerAlumnos();
+            label3.Text = "Alumnos";
+
+            foreach (var alumno in alumnos)
+            {
+                string carrerasTexto = string.Join(", ", alumno.CarrerasIds);
+                string linea = $"Nombre: {alumno.Nombre}  Apellido: {alumno.Apellido}  DNI: {alumno.Dni}  Carreras: {carrerasTexto}";
+
+                comboBox3.Items.Add(linea);
+            }
         }
         private void CargarCarreras()
         {
@@ -55,13 +70,43 @@ namespace TPCAI_intensivo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            validarususario();
-            Validar validador = new Validar();
-            List<ProfesorDto> profesores = validador.ObtenerProfesores();
-            ProfesorDto profesor = new ProfesorDto();
-            
+           // validarususario();
+            GestorLogin gestorLogin = new GestorLogin();
+            string usuario = txtUsuario.Text;
+            string contraseña = txtContraseña.Text;
+            UsuarioDto tipoPerfil = gestorLogin.Validarcredenciales(usuario, contraseña);
 
-          
+            if (tipoPerfil == null)
+            {
+                MessageBox.Show("Usuario o contraseña incorrectos", "Error de autenticación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }else if (tipoPerfil.PerfilUsuario == "PERSONAL")
+            {
+                MessageBox.Show("Bienvenido profesor");
+                ModuloLiquidiacionSueldo moduloLiquidiacionSueldo = new ModuloLiquidiacionSueldo(tipoPerfil);
+                moduloLiquidiacionSueldo.Show();
+                this.Hide();
+            }
+            else if (tipoPerfil.PerfilUsuario == "ADMIN")
+            {
+                MessageBox.Show("Bienvenido Administrador " + usuario);
+            }
+            else if (tipoPerfil.PerfilUsuario == "ALUMNO")
+            {
+                MessageBox.Show("Bienvenido Alumno " + usuario);
+            }
+            else if (tipoPerfil.PerfilUsuario == null)
+
+
+            {
+                MessageBox.Show("Credenciales incorrectas");
+
+
+
+
+
+            }
 
         }
         public void validarususario()

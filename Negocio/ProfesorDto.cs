@@ -15,7 +15,7 @@ namespace Negocio
         string _dni;
         int _antiguedad;
         string _tipo;
-
+       
         public long Id { get => _id; set => _id = value; }
         public string Nombre { get => _nombre; set => _nombre = value; }
         public string Apellido { get => _apellido; set => _apellido = value; }
@@ -23,5 +23,8 @@ namespace Negocio
         public string Dni { get => _dni; set => _dni = value; }
         public int Antiguedad { get => _antiguedad; set => _antiguedad = value; }
         public string Tipo { get => _tipo; set => _tipo = value; }
+
+        
+        
     }
 }

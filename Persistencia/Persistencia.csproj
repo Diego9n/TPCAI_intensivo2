@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlumnoPersistencia.cs" />
     <Compile Include="CarreraPersistencia.cs" />
+    <Compile Include="LoginPersistencia.cs" />
     <Compile Include="ProfesorPersistencia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\WebHelper.cs" />

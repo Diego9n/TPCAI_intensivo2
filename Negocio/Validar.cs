@@ -55,6 +55,23 @@ namespace Negocio
             }
             return listaDTO;
         }
+        public List<AlumnoDto> ObtenerAlumnos()
+        {
+            AlumnoPersistencia alumnoPersistencia = new AlumnoPersistencia();
+            var listaResponse = alumnoPersistencia.buscarDatosUsuario();
+            List<AlumnoDto> listaDTO = new List<AlumnoDto>();
+            foreach (var alumno in listaResponse)
+            {
+                listaDTO.Add(new AlumnoDto
+                {
+                    Nombre = alumno.Nombre,
+                    Apellido = alumno.Apellido,
+                    Dni = alumno.Dni,
+                    CarrerasIds = alumno.CarrerasIds
+                });
+            }
+            return listaDTO;
+        }
 
         public int validarcredenciales(string nombreusuario)
         {

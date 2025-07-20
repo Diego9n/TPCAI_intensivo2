@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,10 @@ namespace TPCAI_intensivo
 {
     public partial class ModuloLiquidiacionSueldo : Form
     {
-        public ModuloLiquidiacionSueldo()
+        public ModuloLiquidiacionSueldo(UsuarioDto usuariodto)
         {
             InitializeComponent();
+            label1.Text = "Bienvenido " + usuariodto.PerfilUsuario;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -23,6 +25,11 @@ namespace TPCAI_intensivo
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ModuloLiquidiacionSueldo_Load(object sender, EventArgs e)
         {
 
         }

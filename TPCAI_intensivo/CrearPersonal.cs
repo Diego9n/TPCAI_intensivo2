@@ -12,9 +12,15 @@ namespace TPCAI_intensivo
 {
     public partial class CrearPersonal : Form
     {
+       
         public CrearPersonal()
         {
             InitializeComponent();
+        }
+
+        private void CrearPersonal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
