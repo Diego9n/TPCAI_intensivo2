@@ -16,8 +16,7 @@ namespace Negocio
 
         public UsuarioDto Validarcredenciales(string username, string password)
         {
-          //  try
-           // {
+          
             LoginResponse usuariologin = loginPersistencia.login(username, password);
             if (usuariologin.PerfilUsuario == "PERSONAL")
             {
@@ -43,11 +42,7 @@ namespace Negocio
 
             }
             return null;
-           // }
-          //  catch (Exception ex)
-          //  {
-           //     throw new Exception("Error al validar las credenciales: " + ex.Message);
-          //  }
+        
         }
     }
 
