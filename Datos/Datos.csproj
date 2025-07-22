@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AlumnoResponse.cs" />
     <Compile Include="CarreraResponse.cs" />
+    <Compile Include="DesbloquearUsuarioRequest.cs" />
     <Compile Include="LoginRequest.cs" />
     <Compile Include="LoginResponse.cs" />
     <Compile Include="ProfesorResponse.cs" />

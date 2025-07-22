@@ -70,6 +70,12 @@
     <Compile Include="ModuloAdministracionPersonal.Designer.cs">
       <DependentUpon>ModuloAdministracionPersonal.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloDesbloquearUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloDesbloquearUsuario.Designer.cs">
+      <DependentUpon>ModuloDesbloquearUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloEgresados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloAdministracionPersonal.resx">
       <DependentUpon>ModuloAdministracionPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloDesbloquearUsuario.resx">
+      <DependentUpon>ModuloDesbloquearUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloEgresados.resx">
       <DependentUpon>ModuloEgresados.cs</DependentUpon>

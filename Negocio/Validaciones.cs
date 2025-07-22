@@ -11,7 +11,7 @@ namespace Negocio
     {
         public bool ValidarIngresoUsuario(string usuario)
         {
-            if (usuario.Length != 8)
+            if (usuario.Length < 8)
             {
                 MessageBox.Show("El usuario debe tener 8 caracteres", "Error de validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

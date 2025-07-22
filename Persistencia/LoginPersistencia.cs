@@ -48,5 +48,21 @@ namespace Persistencia
 
             return loginResponse;
         }
+        public void DesbloquearUsuario(int id)
+        {
+            DesbloquearUsuarioRequest datos = new DesbloquearUsuarioRequest
+            {
+                idUsuario = id
+            };
+
+            var jsonData = JsonConvert.SerializeObject(datos);
+            HttpResponseMessage response = WebHelper.Post("tpIntensivo/desbloquear", jsonData);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                throw new Exception("Error al intentar desbloquear el usuario.");
+            }
+        }
     }
 }

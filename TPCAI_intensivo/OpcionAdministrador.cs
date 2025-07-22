@@ -33,12 +33,14 @@ namespace TPCAI_intensivo
 
         private void btnAlumno_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            ModuloDesbloquearUsuario desbloquearUsuario = new ModuloDesbloquearUsuario();
+            desbloquearUsuario.Show();
+            this.Hide();
         }
     }
 }

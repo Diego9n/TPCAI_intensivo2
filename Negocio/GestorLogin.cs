@@ -44,9 +44,13 @@ namespace Negocio
             return null;
         
         }
+        public void DesbloquearUsuario(int id)
+        {
+            loginPersistencia.DesbloquearUsuario(id);
+        }
+
+
     }
 
 
-
-    
 }
