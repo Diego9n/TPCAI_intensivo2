@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,9 +42,9 @@ namespace Persistencia
                     throw new Exception("Usuario bloqueado");
                 }
 
-                datos.user ="" ;
-                datos.password = "";    
+                throw new Exception("Error al intentar iniciar sesión.");
             }
+        
 
             return loginResponse;
         }

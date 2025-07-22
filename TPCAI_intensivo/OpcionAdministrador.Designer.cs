@@ -32,6 +32,7 @@
             this.btnDocentes = new System.Windows.Forms.Button();
             this.btnAlumno = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEgresados
@@ -61,6 +62,7 @@
             this.btnAlumno.TabIndex = 2;
             this.btnAlumno.Text = "Administracion de alumnos";
             this.btnAlumno.UseVisualStyleBackColor = true;
+            this.btnAlumno.Click += new System.EventHandler(this.btnAlumno_Click);
             // 
             // btnSalir
             // 
@@ -72,17 +74,29 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(251, 213);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(184, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Desbloquear usuarios";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // OpcionAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAlumno);
             this.Controls.Add(this.btnDocentes);
             this.Controls.Add(this.btnEgresados);
             this.Name = "OpcionAdministrador";
             this.Text = "ut";
+            this.Load += new System.EventHandler(this.OpcionAdministrador_Load);
             this.ResumeLayout(false);
 
         }
@@ -93,5 +107,6 @@
         private System.Windows.Forms.Button btnDocentes;
         private System.Windows.Forms.Button btnAlumno;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button button1;
     }
 }

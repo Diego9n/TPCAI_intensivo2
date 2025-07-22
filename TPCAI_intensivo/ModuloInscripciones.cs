@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace TPCAI_intensivo
 {
     public partial class ModuloInscripciones : Form
     {
-        public ModuloInscripciones()
+        public ModuloInscripciones(UsuarioDto usuario)
         {
             InitializeComponent();
+            UsuarioDto usuarioAlumno = usuario; 
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -25,6 +28,13 @@ namespace TPCAI_intensivo
         private void ModuloInscripciones_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ModuloLogin moduloLogin = new ModuloLogin();
+            moduloLogin.Show();
+            this.Hide();
         }
     }
 }

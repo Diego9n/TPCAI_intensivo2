@@ -16,13 +16,9 @@ namespace Negocio
 
         public UsuarioDto Validarcredenciales(string username, string password)
         {
+          //  try
+           // {
             LoginResponse usuariologin = loginPersistencia.login(username, password);
-
-            if (usuariologin == null)
-            {
-                return null; 
-            }
-
             if (usuariologin.PerfilUsuario == "PERSONAL")
             {
                 return new UsuarioDto
@@ -30,12 +26,32 @@ namespace Negocio
                     Id = usuariologin.Id,
                     PerfilUsuario = usuariologin.PerfilUsuario
                 };
+            } else if (usuariologin.PerfilUsuario == "ALUMNO")
+                {
+                return new UsuarioDto
+                {
+                    Id = usuariologin.Id,
+                    PerfilUsuario = usuariologin.PerfilUsuario
+                };
+               } else if (usuariologin.PerfilUsuario == "ADMIN")
+                 {
+                return new UsuarioDto
+                {
+                    Id = usuariologin.Id,
+                    PerfilUsuario = usuariologin.PerfilUsuario
+                };
+
             }
-
-            return null; 
+            return null;
+           // }
+          //  catch (Exception ex)
+          //  {
+           //     throw new Exception("Error al validar las credenciales: " + ex.Message);
+          //  }
         }
-
-        
-
     }
+
+
+
+    
 }

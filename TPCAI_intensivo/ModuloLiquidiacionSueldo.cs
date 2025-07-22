@@ -33,5 +33,13 @@ namespace TPCAI_intensivo
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ModuloLogin moduloLogin = new ModuloLogin();
+            moduloLogin.Show();
+            this.Hide();
+
+        }
     }
 }

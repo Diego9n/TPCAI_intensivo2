@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Negocio;
 using System.Windows.Forms;
+using System.Security.Policy;
+using System.Linq.Expressions;
 
 namespace TPCAI_intensivo
 {
@@ -70,56 +72,66 @@ namespace TPCAI_intensivo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-           // validarususario();
-            GestorLogin gestorLogin = new GestorLogin();
+            bool validaringresousuario = false; 
+            bool validarcontraseña = false; // para validar si el usuario y la contraseña son correctos
+            GestorLogin gestorLogin = new GestorLogin(); // para manejar la clase GestorLogin que se encuentra en la capa de negocio
+            Validaciones validaciones = new Validaciones(); //para manejar la clase de validaciones que se encuentra en la capa de negocio
             string usuario = txtUsuario.Text;
-            string contraseña = txtContraseña.Text;
-            UsuarioDto tipoPerfil = gestorLogin.Validarcredenciales(usuario, contraseña);
+            string contraseña = txtContraseña.Text; 
+            try {
+               
+                validaringresousuario = validaciones.ValidarIngresoUsuario(usuario); // llama al metodo que se encuentra en la capa de negocio : Validaciones
+                validarcontraseña = validaciones.ValidarIngresoContraseña(contraseña); // llama al metodo que se encuentra en la capa de negocio : Validaciones
+                if (validaringresousuario == true && validarcontraseña ==true)
+                     { 
+                              UsuarioDto tipoPerfil = gestorLogin.Validarcredenciales(usuario, contraseña); // llama al metodo que se encuentra en la capa de negocio : GestorLogin
+               
 
-            if (tipoPerfil == null)
-            {
-                MessageBox.Show("Usuario o contraseña incorrectos", "Error de autenticación",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }else if (tipoPerfil.PerfilUsuario == "PERSONAL")
-            {
-                MessageBox.Show("Bienvenido profesor");
-                ModuloLiquidiacionSueldo moduloLiquidiacionSueldo = new ModuloLiquidiacionSueldo(tipoPerfil);
-                moduloLiquidiacionSueldo.Show();
-                this.Hide();
+                         if (tipoPerfil == null) // verifica si no hay coincidencias da mensaje de error
+                         {
+                                  MessageBox.Show("Usuario o contraseña incorrectos", "Error de autenticación",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                 return;
+                         }else if (tipoPerfil.PerfilUsuario == "PERSONAL") // dependiendo el perfil direcciona al formulario correspondiente
+                         {
+                             MessageBox.Show("Bienvenido profesor");
+                             ModuloLiquidiacionSueldo moduloLiquidiacionSueldo = new ModuloLiquidiacionSueldo(tipoPerfil);
+                             moduloLiquidiacionSueldo.Show();
+                             this.Hide();
+                         }
+                         else if (tipoPerfil.PerfilUsuario == "ADMIN")
+                         {
+                             MessageBox.Show("Bienvenido Administrador " + usuario);
+                             OpcionAdministrador opcionAdministrador = new OpcionAdministrador(tipoPerfil);
+                             opcionAdministrador.Show();
+                             this.Hide();
+                          }
+                          else if (tipoPerfil.PerfilUsuario == "ALUMNO")
+                          {
+                             MessageBox.Show("Bienvenido Alumno " + usuario);
+                             ModuloInscripciones moduloInscripciones = new ModuloInscripciones(tipoPerfil);
+                             moduloInscripciones.Show();
+                             this.Hide();
+                          }
+                     }
             }
-            else if (tipoPerfil.PerfilUsuario == "ADMIN")
+            catch (Exception ex) // captura las excepciones que puedan surgir al momento de validar las credenciales
             {
-                MessageBox.Show("Bienvenido Administrador " + usuario);
+                MessageBox.Show(ex.Message, "Error de credenciales", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (tipoPerfil.PerfilUsuario == "ALUMNO")
-            {
-                MessageBox.Show("Bienvenido Alumno " + usuario);
-            }
-            else if (tipoPerfil.PerfilUsuario == null)
-
-
-            {
-                MessageBox.Show("Credenciales incorrectas");
 
 
 
-
-
-            }
 
         }
-        public void validarususario()
-        {
-
-            if (txtUsuario.Text == "")
-            {
-                MessageBox.Show("Debe ingresar un usuario");
-                return;
-            }
 
 
-        }
 
+        
+
+
+    
+
+        
     }
 }
