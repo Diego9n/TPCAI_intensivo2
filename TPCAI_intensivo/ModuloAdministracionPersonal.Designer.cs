@@ -1,6 +1,6 @@
 ﻿namespace TPCAI_intensivo
 {
-    partial class ModuloAdministracionPersonas
+    partial class ModuloAdministracionPersonal
     {
         /// <summary>
         /// Required designer variable.
@@ -40,6 +40,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Modificar/Eliminar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -50,15 +51,15 @@
             this.button1.Text = "Crear Personal";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // ModuloAdministracionPersonas
+            // ModuloAdministracionPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "ModuloAdministracionPersonas";
-            this.Text = "ModuloAdministracionPersonas";
+            this.Name = "ModuloAdministracionPersonal";
+            this.Text = "ModuloAdministracionPersonal";
             this.Load += new System.EventHandler(this.ModuloAdministracionPersonas_Load);
             this.ResumeLayout(false);
 

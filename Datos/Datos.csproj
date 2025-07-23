@@ -54,6 +54,8 @@
     <Compile Include="DesbloquearUsuarioRequest.cs" />
     <Compile Include="LoginRequest.cs" />
     <Compile Include="LoginResponse.cs" />
+    <Compile Include="MateriaRequest.cs" />
+    <Compile Include="MateriaResponse.cs" />
     <Compile Include="ProfesorResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

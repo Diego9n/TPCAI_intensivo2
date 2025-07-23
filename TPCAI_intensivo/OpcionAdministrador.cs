@@ -42,5 +42,12 @@ namespace TPCAI_intensivo
             desbloquearUsuario.Show();
             this.Hide();
         }
+
+        private void btnDocentes_Click(object sender, EventArgs e)
+        {
+            ModuloAdministracionPersonal moduloAdministracionPersonal = new ModuloAdministracionPersonal();
+            moduloAdministracionPersonal.Show();    
+            this.Hide();
+        }
     }
 }

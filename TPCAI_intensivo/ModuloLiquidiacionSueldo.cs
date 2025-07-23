@@ -16,7 +16,7 @@ namespace TPCAI_intensivo
         public ModuloLiquidiacionSueldo(UsuarioDto usuariodto)
         {
             InitializeComponent();
-            label1.Text = "Bienvenido " + usuariodto.PerfilUsuario;
+            label1.Text = "Bienvenido " + usuariodto.PerfilUsuario + " " + usuariodto.Id;
         }
 
         private void button1_Click(object sender, EventArgs e)

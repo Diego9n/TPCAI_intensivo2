@@ -53,6 +53,7 @@
             this.btnDocentes.TabIndex = 1;
             this.btnDocentes.Text = "Administracion de docentes";
             this.btnDocentes.UseVisualStyleBackColor = true;
+            this.btnDocentes.Click += new System.EventHandler(this.btnDocentes_Click);
             // 
             // btnAlumno
             // 

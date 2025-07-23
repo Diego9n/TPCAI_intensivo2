@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace TPCAI_intensivo
 {
-    public partial class ModuloAdministracionPersonas : Form
+    public partial class ModuloAdministracionPersonal : Form
     {
-        public ModuloAdministracionPersonas()
+        public ModuloAdministracionPersonal()
         {
             InitializeComponent();
         }
@@ -30,6 +30,13 @@ namespace TPCAI_intensivo
         {
             
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VerPersonal verPersonal = new VerPersonal();
+            verPersonal.Show();
+            this.Hide();
         }
     }
 }
