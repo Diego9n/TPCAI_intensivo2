@@ -13,40 +13,39 @@ namespace Persistencia
 {
     public class MateriaPersistencia
     {
-        public LoginResponse login(String username, String password)
+        public MateriaResponse materias(int Idmateria)
         {
-
-            LoginRequest datos = new LoginRequest();
-            datos.user = username;
-            datos.password = password;
+            MateriaRequest materias = new MateriaRequest();
+            materias.Id = Idmateria; // Error CS0122 fixed by making 'Id' property public
 
             // Convert the data to a JSON string
-            var jsonData = JsonConvert.SerializeObject(datos);
+            var jsonData = JsonConvert.SerializeObject(materias);
 
-            HttpResponseMessage response = WebHelper.Post("tpIntensivo/login", jsonData);
+            HttpResponseMessage response = WebHelper.Post("/tpIntensivo/materias/{carreraId}", jsonData);
 
-            LoginResponse loginResponse = null;
+            MateriaResponse MateriaResponse = null;
 
             if (response.IsSuccessStatusCode)
             {
                 var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result);
-                loginResponse = JsonConvert.DeserializeObject<LoginResponse>(reader.ReadToEnd());
+                MateriaResponse = JsonConvert.DeserializeObject<MateriaResponse>(reader.ReadToEnd());
             }
             else
             {
                 Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
                 if (response.StatusCode.Equals(401))
                 {
-                    throw new Exception("Usuario bloqueado");
+                    throw new Exception("Error al desplegar materias");
                 }
 
-                throw new Exception("Error al intentar iniciar sesión.");
+             
             }
 
-
-            return loginResponse;
+            return  MateriaResponse;
         }
-
-
+    }
+    public class MateriaRequest
+    {
+        public int Id { get; set; } // Changed 'Id' property from private to public to fix CS0122
     }
 }

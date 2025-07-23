@@ -8,6 +8,10 @@ namespace Datos
 {
     public class MateriaResponse
     {
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string conidcion { get; set; }
+        public int nota { get; set; }
 
 
     }

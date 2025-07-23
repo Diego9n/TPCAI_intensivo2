@@ -8,6 +8,7 @@ namespace Datos
 {
     public class MateriaRequest
     {
-        int CarreraId { get; set; } 
+        int id { get; set; }
+     
     }
 }

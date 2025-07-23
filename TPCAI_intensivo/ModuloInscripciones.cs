@@ -28,6 +28,17 @@ namespace TPCAI_intensivo
         private void ModuloInscripciones_Load(object sender, EventArgs e)
         {
 
+            GestorInscripciones gestorInscripciones = new GestorInscripciones();
+           
+
+            List<CarreraDto> carreras =gestorInscripciones.ObtenerCarreras();
+            label1.Text = "Carreras";
+
+            foreach (var carrera in carreras)
+            {
+                comboBox1.Items.Add(" ID:  " + carrera.Id + "  Nombre:  " + carrera.Nombre);
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -35,6 +46,16 @@ namespace TPCAI_intensivo
             ModuloLogin moduloLogin = new ModuloLogin();
             moduloLogin.Show();
             this.Hide();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
