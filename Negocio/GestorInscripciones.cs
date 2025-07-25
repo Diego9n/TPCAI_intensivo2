@@ -9,31 +9,42 @@ using Persistencia;
 namespace Negocio
 {
     public class GestorInscripciones
-
     {
         CarreraPersistencia CarreraPersistencia = new CarreraPersistencia();
         ProfesorPersistencia ProfesorPersistencia = new ProfesorPersistencia();
         List<CarreraResponse> carreras = new List<CarreraResponse>();
         List<ProfesorResponse> profesores = new List<ProfesorResponse>();
         MateriaPersistencia materiaPersistencia = new MateriaPersistencia();
+        List<MateriaResponse> materias = new List<MateriaResponse>();
 
-        public List<MateriaResponse> ObtenerMaterias(int idcarrera)
+        public List<MateriaDto> ObtenerMaterias()
         {
-            List<MateriaResponse> materias = new List<MateriaResponse>();
-            try
+            // Cambiar MateriaPersistencia a materiaPersistencia para usar la instancia de objeto
+            var listaResponse = materiaPersistencia.buscarDatosUsuario();
+
+            // Convertir CarreraResponse a CarreraDTO para manejar datos
+            // de forma más sencilla en la interfaz de usuario.
+            List<MateriaDto> listaDTO = new List<MateriaDto>();
+            foreach (var materia in listaResponse)
             {
-                // Adjusted to handle the return type correctly
-                MateriaResponse materia = materiaPersistencia.materias(idcarrera);
-                if (materia != null)
+                listaDTO.Add(new MateriaDto
                 {
-                    materias.Add(materia);
+                    id = (int)materia.id,
+                    nombre = materia.nombre,
+                    horassemanales = materia.horassemanales,
+                    foreach(var correlativa in materia.correlativas)
+                {
+                    // Asumiendo que correlativa es un objeto con una propiedad 'id'
+                    if (materia.correlativas != null)
+                    {
+                        listaDTO.Last().correlativas.Add(new MateriaDto { id = (int)correlativa.id, nombre = correlativa.nombre });
+                    }
                 }
+
+            });
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al obtener las materias: {ex.Message}");
-            }
-            return materias;
+
+            return listaDTO;
         }
 
         public List<CarreraDto> ObtenerCarreras()

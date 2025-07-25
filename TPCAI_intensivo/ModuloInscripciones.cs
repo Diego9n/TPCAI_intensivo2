@@ -27,10 +27,10 @@ namespace TPCAI_intensivo
 
         private void ModuloInscripciones_Load(object sender, EventArgs e)
         {
-
+          
             GestorInscripciones gestorInscripciones = new GestorInscripciones();
            
-
+            
             List<CarreraDto> carreras =gestorInscripciones.ObtenerCarreras();
             label1.Text = "Carreras";
 
@@ -38,7 +38,9 @@ namespace TPCAI_intensivo
             {
                 comboBox1.Items.Add(" ID:  " + carrera.Id + "  Nombre:  " + carrera.Nombre);
             }
-
+            MateriaDto materia = new MateriaDto();
+            int idCarrera=1;
+            List<MateriaDto> materias = gestorInscripciones.ObtenerMateias();
         }
 
         private void button3_Click(object sender, EventArgs e)

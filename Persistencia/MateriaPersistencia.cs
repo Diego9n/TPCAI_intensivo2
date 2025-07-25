@@ -13,39 +13,33 @@ namespace Persistencia
 {
     public class MateriaPersistencia
     {
-        public MateriaResponse materias(int Idmateria)
+
+        public List<MateriaResponse> buscarDatosUsuario(int idcarrera)
         {
-            MateriaRequest materias = new MateriaRequest();
-            materias.Id = Idmateria; // Error CS0122 fixed by making 'Id' property public
+            idcarrera = 1;
+            MateriaResponse materia = new MateriaResponse();
+            List<MateriaResponse> materias = new List<MateriaResponse>();
 
-            // Convert the data to a JSON string
-            var jsonData = JsonConvert.SerializeObject(materias);
 
-            HttpResponseMessage response = WebHelper.Post("/tpIntensivo/materias/{carreraId}", jsonData);
+            HttpResponseMessage response = WebHelper.Get($"tpIntensivo/materias/{idcarrera}");
 
-            MateriaResponse MateriaResponse = null;
-
-            if (response.IsSuccessStatusCode)
-            {
-                var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result);
-                MateriaResponse = JsonConvert.DeserializeObject<MateriaResponse>(reader.ReadToEnd());
-            }
-            else
-            {
-                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
-                if (response.StatusCode.Equals(401))
+                if (response.IsSuccessStatusCode)
                 {
-                    throw new Exception("Error al desplegar materias");
+               
+                    var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result);
+                    materia = JsonConvert.DeserializeObject<MateriaResponse>(reader.ReadToEnd());
+                }
+            
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                    throw new Exception("Error al momento de buscar las materias");
                 }
 
-             
-            }
+                return materias;
+            
 
-            return  MateriaResponse;
         }
     }
-    public class MateriaRequest
-    {
-        public int Id { get; set; } // Changed 'Id' property from private to public to fix CS0122
-    }
 }
+    
