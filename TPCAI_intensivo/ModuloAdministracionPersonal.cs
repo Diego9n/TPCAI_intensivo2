@@ -12,30 +12,41 @@ using System.Windows.Forms;
 namespace TPCAI_intensivo
 {
     public partial class ModuloAdministracionPersonal : Form
-    {
-        public ModuloAdministracionPersonal()
+    { 
+        UsuarioDto UsuarioDto { get; set; }
+        public ModuloAdministracionPersonal(UsuarioDto usuarioDto)
+
         {
             InitializeComponent();
+            UsuarioDto = usuarioDto;
         }
 
         private void ModuloAdministracionPersonas_Load(object sender, EventArgs e)
         {
 
-           
+
 
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
 
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
             VerPersonal verPersonal = new VerPersonal();
             verPersonal.Show();
+            this.Hide();
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            CrearPersonal crearPersonal = new CrearPersonal(UsuarioDto);
+            crearPersonal.Show();
             this.Hide();
         }
     }

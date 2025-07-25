@@ -13,10 +13,11 @@ namespace TPCAI_intensivo
 {
     public partial class OpcionAdministrador : Form
     {
+        UsuarioDto usuarioDto { get; set; }
         public OpcionAdministrador(UsuarioDto usuario)
         {
             InitializeComponent();
-            UsuarioDto usuarioAdmin = usuario;
+            UsuarioDto usuarioDto;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,21 +34,20 @@ namespace TPCAI_intensivo
 
         private void btnAlumno_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            ModuloDesbloquearUsuario desbloquearUsuario = new ModuloDesbloquearUsuario();
-            desbloquearUsuario.Show();
-            this.Hide();
         }
+
 
         private void btnDocentes_Click(object sender, EventArgs e)
         {
-            ModuloAdministracionPersonal moduloAdministracionPersonal = new ModuloAdministracionPersonal();
+            ModuloAdministracionPersonal moduloAdministracionPersonal = new ModuloAdministracionPersonal(usuarioDto);
             moduloAdministracionPersonal.Show();    
             this.Hide();
+
         }
     }
 }
