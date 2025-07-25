@@ -21,5 +21,12 @@ namespace TPCAI_intensivo
         {
 
         }
+
+        private void ModuloEgresados_Load(object sender, EventArgs e)
+        {
+#if true
+
+#endif
+        }
     }
 }
