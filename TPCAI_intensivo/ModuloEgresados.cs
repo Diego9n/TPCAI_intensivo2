@@ -17,16 +17,16 @@ namespace TPCAI_intensivo
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ModuloEgresados_Load(object sender, EventArgs e)
         {
 #if true
-
+           
 #endif
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            h
         }
     }
 }
