@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Persistencia.utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -31,6 +32,32 @@ namespace Persistencia
             }
 
             return alumnos;
+
+
+        }
+        public List<AlumnoCondicionResponse> BuscarConddiconAlumno(int idalumno)
+        {
+           
+            List<AlumnoCondicionResponse> alumnoCondicion = new List<AlumnoCondicionResponse>();
+
+            HttpResponseMessage response = WebHelper.Get($"tpIntensivo/alumno/{idalumno}/materias");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result);
+                string json = reader.ReadToEnd();
+
+                alumnoCondicion = JsonConvert.DeserializeObject<List<AlumnoCondicionResponse>>(json);
+            }
+            else
+            {
+                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                throw new Exception("Error al momento de buscar las materias");
+            }
+
+            return alumnoCondicion;
+
+
         }
     }
 }

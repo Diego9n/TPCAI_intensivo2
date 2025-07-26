@@ -44,30 +44,27 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(132, 108);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(99, 88);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(305, 24);
+            this.comboBox1.Size = new System.Drawing.Size(230, 21);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(183, 161);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Location = new System.Drawing.Point(119, 126);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 24);
+            this.comboBox2.Size = new System.Drawing.Size(441, 21);
             this.comboBox2.TabIndex = 1;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // lblCarrera
             // 
             this.lblCarrera.AutoSize = true;
-            this.lblCarrera.Location = new System.Drawing.Point(71, 108);
-            this.lblCarrera.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCarrera.Location = new System.Drawing.Point(53, 88);
             this.lblCarrera.Name = "lblCarrera";
-            this.lblCarrera.Size = new System.Drawing.Size(52, 16);
+            this.lblCarrera.Size = new System.Drawing.Size(41, 13);
             this.lblCarrera.TabIndex = 2;
             this.lblCarrera.Text = "Carrera";
             this.lblCarrera.Click += new System.EventHandler(this.label1_Click);
@@ -75,58 +72,52 @@
             // lblMateria
             // 
             this.lblMateria.AutoSize = true;
-            this.lblMateria.Location = new System.Drawing.Point(81, 165);
-            this.lblMateria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMateria.Location = new System.Drawing.Point(61, 134);
             this.lblMateria.Name = "lblMateria";
-            this.lblMateria.Size = new System.Drawing.Size(52, 16);
+            this.lblMateria.Size = new System.Drawing.Size(42, 13);
             this.lblMateria.TabIndex = 3;
             this.lblMateria.Text = "Materia";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 304);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(61, 247);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 16);
+            this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Curso";
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(183, 300);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox3.Location = new System.Drawing.Point(137, 244);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(160, 24);
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(445, 112);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(334, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 16);
+            this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Ofertasss";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(244, 219);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(183, 178);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
             this.button1.Text = "Ver ofertas";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(183, 364);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(137, 296);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(191, 28);
+            this.button2.Size = new System.Drawing.Size(143, 23);
             this.button2.TabIndex = 8;
             this.button2.Text = "Aceptar Inscripcion";
             this.button2.UseVisualStyleBackColor = true;
@@ -134,19 +125,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(80, 59);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(60, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 16);
+            this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Nª Ranking";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(273, 427);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Location = new System.Drawing.Point(205, 347);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 28);
+            this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 10;
             this.button3.Text = "Salir";
             this.button3.UseVisualStyleBackColor = true;
@@ -154,9 +143,9 @@
             // 
             // ModuloInscripciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
@@ -168,7 +157,6 @@
             this.Controls.Add(this.lblCarrera);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ModuloInscripciones";
             this.Text = "ModuloInscripciones";
             this.Load += new System.EventHandler(this.ModuloInscripciones_Load);

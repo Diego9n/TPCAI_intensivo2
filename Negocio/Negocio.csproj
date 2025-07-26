@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlumnoCondicionDto.cs" />
     <Compile Include="AlumnoDto.cs" />
     <Compile Include="CarreraDto.cs" />
     <Compile Include="GestorInscripciones.cs" />

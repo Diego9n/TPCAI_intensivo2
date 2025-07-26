@@ -16,28 +16,26 @@ namespace Persistencia
 
         public List<MateriaResponse> buscarDatosUsuario(int idcarrera)
         {
-            idcarrera = 1;
-            MateriaResponse materia = new MateriaResponse();
+            int idCarrera = idcarrera;
             List<MateriaResponse> materias = new List<MateriaResponse>();
 
+            HttpResponseMessage response = WebHelper.Get($"tpIntensivo/materias/{idCarrera}");
 
-            HttpResponseMessage response = WebHelper.Get($"tpIntensivo/materias/{idcarrera}");
+            if (response.IsSuccessStatusCode)
+            {
+                var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result);
+                string json = reader.ReadToEnd();
 
-                if (response.IsSuccessStatusCode)
-                {
-               
-                    var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result);
-                    materia = JsonConvert.DeserializeObject<MateriaResponse>(reader.ReadToEnd());
-                }
-            
-                else
-                {
-                    Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
-                    throw new Exception("Error al momento de buscar las materias");
-                }
+                materias = JsonConvert.DeserializeObject<List<MateriaResponse>>(json);
+            }
+            else
+            {
+                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                throw new Exception("Error al momento de buscar las materias");
+            }
 
-                return materias;
-            
+            return materias;
+
 
         }
     }

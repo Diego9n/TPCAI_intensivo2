@@ -8,15 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TPCAI_intensivo
 {
     public partial class ModuloInscripciones : Form
     {
+        GestorInscripciones gestorInscripciones = new GestorInscripciones();
+        UsuarioDto usuarioalumno = new UsuarioDto();    
         public ModuloInscripciones(UsuarioDto usuario)
         {
             InitializeComponent();
-            UsuarioDto usuarioAlumno = usuario; 
+            UsuarioDto usuarioAlumno = usuario;
+            usuarioalumno = usuarioAlumno; 
+           
 
         }
 
@@ -27,20 +32,13 @@ namespace TPCAI_intensivo
 
         private void ModuloInscripciones_Load(object sender, EventArgs e)
         {
-          
-            GestorInscripciones gestorInscripciones = new GestorInscripciones();
+            List<CarreraDto> carreras = gestorInscripciones.ObtenerCarreras();
+            comboBox1.DisplayMember = "Nombre";
+            comboBox1.ValueMember = "Id";
+            comboBox1.DataSource = carreras;
            
-            
-            List<CarreraDto> carreras =gestorInscripciones.ObtenerCarreras();
             label1.Text = "Carreras";
-
-            foreach (var carrera in carreras)
-            {
-                comboBox1.Items.Add(" ID:  " + carrera.Id + "  Nombre:  " + carrera.Nombre);
-            }
-            MateriaDto materia = new MateriaDto();
-            int idCarrera=1;
-            List<MateriaDto> materias = gestorInscripciones.ObtenerMateias();
+        
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -52,11 +50,27 @@ namespace TPCAI_intensivo
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (comboBox1.SelectedItem != null)
+            {
+                int idCarrera = (int)comboBox1.SelectedValue;
+
+
+                List<MateriaDto> materias = gestorInscripciones.MateriasRestantes(idCarrera , (int)usuarioalumno.Id);
+
+                comboBox2.DataSource = materias;
+                comboBox2.DisplayMember = "Nombre";
+                comboBox2.ValueMember = "Id";
+            }
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBox2.SelectedItem is MateriaDto materia)
+            {
+                int idMateria = materia.id; 
+               
+            }
+
 
         }
     }

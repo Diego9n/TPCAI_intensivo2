@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Datos
+namespace Negocio
 {
-    public class MateriaResponse
+    public class AlumnoCondicionDto
     {
         public int id { get; set; }
         public string nombre { get; set; }
-        public int horassemanales { get; set; }
-        public List<MateriaRequest> correlativas{ get; set; }
-
+        public string condicion { get; set; }
+        public int nota { get; set; }
 
     }
 }
