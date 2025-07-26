@@ -17,5 +17,6 @@ namespace Negocio
         public string Apellido { get => apellido; set => apellido = value; }
         public string Dni { get => dni; set => dni = value; }
         public List<int> CarrerasIds { get => carrerasIds; set => carrerasIds = value; }
+
     }
 }

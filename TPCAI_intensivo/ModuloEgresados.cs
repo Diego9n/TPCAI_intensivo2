@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace TPCAI_intensivo
 {
     public partial class ModuloEgresados : Form
     {
+        private Validar gestorNegocio = new Validar();
         public ModuloEgresados()
         {
             InitializeComponent();
@@ -19,14 +21,30 @@ namespace TPCAI_intensivo
 
         private void ModuloEgresados_Load(object sender, EventArgs e)
         {
-#if true
-           
-#endif
+            CargarCarrerasEnComboBox();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void CargarCarrerasEnComboBox()
         {
-            h
+            try
+            {
+                List<CarreraDto> listaDeCarreras = gestorNegocio.ObtenerCarreras();
+                comboBoxCarrera.DataSource = listaDeCarreras;
+                comboBoxCarrera.DisplayMember = "Nombre";
+                comboBoxCarrera.ValueMember = "Id";
+                comboBoxCarrera.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la lista de carreras: " + ex.Message, "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (comboBoxCarrera.SelectedValue == null)
+            {
+                MessageBox.Show("Por favor, seleccione una carrera de la lista.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
     }
 }
