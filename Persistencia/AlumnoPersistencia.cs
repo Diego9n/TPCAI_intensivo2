@@ -32,5 +32,21 @@ namespace Persistencia
 
             return alumnos;
         }
+        public List<MateriaAlumnoResponse> ObtenerMateriasDeAlumno(int alumnoId)
+        {
+            HttpResponseMessage response = WebHelper.Get($"tpIntensivo/alumno/{alumnoId}/materias");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var contentStream = response.Content.ReadAsStringAsync().Result;
+                List<MateriaAlumnoResponse> listaMaterias = JsonConvert.DeserializeObject<List<MateriaAlumnoResponse>>(contentStream);
+
+                return listaMaterias;
+            }
+            else
+            {
+                throw new Exception($"Error al buscar las materias del alumno. Código de estado: {response.StatusCode}");
+            }
+        }
     }
 }

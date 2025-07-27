@@ -54,6 +54,7 @@
     <Compile Include="DesbloquearUsuarioRequest.cs" />
     <Compile Include="LoginRequest.cs" />
     <Compile Include="LoginResponse.cs" />
+    <Compile Include="MateriaAlumnoResponse.cs" />
     <Compile Include="MateriaRequest.cs" />
     <Compile Include="MateriaResponse.cs" />
     <Compile Include="ProfesorResponse.cs" />

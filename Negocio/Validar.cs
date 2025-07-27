@@ -76,11 +76,45 @@ namespace Negocio
 
         public int validarcredenciales(string nombreusuario)
         {
-            int aceptar_tipo = 0;   
+            int aceptar_tipo = 0;
 
 
 
             return aceptar_tipo;
+        }
+        public List<MateriaDto> ObtenerMateriasPorCarrera(int carreraId)
+        {
+            var persistencia = new CarreraPersistencia();
+            List<MateriaResponse> materiasResponse = persistencia.ObtenerMateriasPorCarrera(carreraId);
+            var listaDto = new List<MateriaDto>();
+
+            foreach (var materiaResponse in materiasResponse)
+            {
+                listaDto.Add(new MateriaDto
+                {
+                    Id = materiaResponse.Id,
+                    Nombre = materiaResponse.Nombre
+                });
+            }
+            return listaDto;
+        }
+        public List<MateriaAlumnoDto> ObtenerMateriasDeAlumno(int alumnoId)
+        {
+            var persistencia = new AlumnoPersistencia();
+            List<MateriaAlumnoResponse> materiasResponse = persistencia.ObtenerMateriasDeAlumno(alumnoId);
+
+            var listaDto = new List<MateriaAlumnoDto>();
+            foreach (var materiaResponse in materiasResponse)
+            {
+                listaDto.Add(new MateriaAlumnoDto
+                {
+                    Id = materiaResponse.Id,
+                    Nombre = materiaResponse.Nombre,
+                    Condicion = materiaResponse.Condicion,
+                    Nota = materiaResponse.Nota
+                });
+            }
+            return listaDto;
         }
     }
 }
