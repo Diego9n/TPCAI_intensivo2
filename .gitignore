@@ -361,3 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Negocio/GestorInscripciones.cs
+/Persistencia/AlumnoPersistencia.cs
+/Persistencia/CarreraPersistencia.cs
+/Persistencia/MateriaPersistencia.cs
+/TPCAI_intensivo/ModuloInscripciones.cs
+/TPCAI_intensivo/ModuloInscripciones.Designer.cs
+/Datos/MateriaRequest.cs
+/Datos/MateriaResponse.cs
