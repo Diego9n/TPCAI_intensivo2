@@ -34,8 +34,8 @@ namespace TPCAI_intensivo
 
         private void btnAlumno_Click(object sender, EventArgs e)
         {
-            CrearAlumno crearAlumno = new CrearAlumno();
-            crearAlumno.Show();
+           ModuloAdministracionAlumno moduloAdministracionAlumno = new ModuloAdministracionAlumno();
+            moduloAdministracionAlumno.Show();
             this.Hide();
         }
 

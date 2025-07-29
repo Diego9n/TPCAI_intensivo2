@@ -41,7 +41,7 @@ namespace TPCAI_intensivo
             {
                 GestorCRUDAlumno gestorCRUDAlumno = new GestorCRUDAlumno(); 
                 gestorCRUDAlumno.EliminarAlumno(eliminarId);
-                MessageBox.Show("Profesor eliminado exitosamente.");
+                MessageBox.Show("alumno eliminado exitosamente.");
             }
             else
             {
@@ -53,33 +53,29 @@ namespace TPCAI_intensivo
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             GestorCRUDAlumno gestorCRUDAlumno = new GestorCRUDAlumno();
-            /*if (int.TryParse(txtId.Text, out int idprofesor))
-                        {
-                            ProfesorDto profesor = gestorCRUDPersonal.BuscarProfesorID(idprofesor);
+            if (int.TryParse(txtId.Text, out int idalumno))
+            {
+               AlumnoDto alumno = gestorCRUDAlumno.BuscarAlumnoID(idalumno);
 
-                            if (profesor != null)
+                            if (alumno != null)
                             {
-                                txtNombre.Text = profesor.Nombre;
-                                txtApellido.Text = profesor.Apellido;
-                                txtDni.Text = profesor.Dni;
-                                tx.Text = profesor.Cuit;
-                                textBox6.Text = profesor.Tipo;
+                                txtNombre.Text = alumno.Nombre;
+                                txtApellido.Text = alumno.Apellido;
+                                txtDni.Text = alumno.Dni;
+                              
+                              
 
 
                             }
                             else
-                        {
-                                MessageBox.Show("No se encontró un profesor con ese ID.");
+                            {
+                                MessageBox.Show("No se encontró un alumno con ese ID.");
                             }
-                        }
-                        else
-                        {
+                        
 
-                            MessageBox.Show("Por favor, ingrese un número válido.");
-                        }
-
-            }*/
+            }
         }
+
 
         private void VerAlumno_Load(object sender, EventArgs e)
         {

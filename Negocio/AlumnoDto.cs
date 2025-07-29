@@ -8,7 +8,7 @@ namespace Negocio
 {
     public class AlumnoDto
     {
-        public int id { get; set; }
+        int id;
         string nombre;
         string apellido;
         string dni;
@@ -18,5 +18,6 @@ namespace Negocio
         public string Apellido { get => apellido; set => apellido = value; }
         public string Dni { get => dni; set => dni = value; }
         public List<int> CarrerasIds { get => carrerasIds; set => carrerasIds = value; }
+        public int Id { get => id; set => id = value; }
     }
 }

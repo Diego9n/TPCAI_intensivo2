@@ -30,19 +30,29 @@ namespace Negocio
      
         public AlumnoDto BuscarAlumnoID(int id) 
         {
-            AlumnoDto alumnoDto = new AlumnoDto();  
-            foreach (var alumno in ObtenerAlumnos())
+            AlumnoDto alumnoDto = new AlumnoDto();
+            bool encontrado= false;
+            List<AlumnoDto> listaAlumnos = ObtenerAlumnos();
+            foreach (var alumno in listaAlumnos)
             {
-                if (alumno.id == id)
+                if (alumno.Id == id)
                 {
-                    alumnoDto.id = (int)alumno.id;
+                    alumnoDto.Id = (int)alumno.Id;
                     alumnoDto.Nombre = alumno.Nombre;
                     alumnoDto.Apellido = alumno.Apellido;
                     alumnoDto.Dni = alumno.Dni;
                     alumnoDto.CarrerasIds = alumno.CarrerasIds;
-                    break; // Salir del bucle una vez encontrado
-                }
+                    encontrado= true;   
+                    break; 
+                } 
+               
             }
+            if (!encontrado)
+            {
+
+               alumnoDto = null;
+            }
+        
             
          
             return alumnoDto;
@@ -57,6 +67,7 @@ namespace Negocio
             {
                 listaDTO.Add(new AlumnoDto
                 {
+                    Id = alumno.Id,
                     Nombre = alumno.Nombre,
                     Apellido = alumno.Apellido,
                     Dni = alumno.Dni,
