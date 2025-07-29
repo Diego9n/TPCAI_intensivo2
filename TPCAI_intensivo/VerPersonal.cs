@@ -81,7 +81,7 @@ namespace TPCAI_intensivo
             {
                 GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
                 gestorCRUDPersonal.EliminarPersonal(eliminarId);
-                MessageBox.Show("Profesor eliminado exitosamente.");
+                MessageBox.Show("Alumno eliminado exitosamente.");
             }
             else
             {

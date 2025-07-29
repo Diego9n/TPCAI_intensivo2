@@ -8,6 +8,7 @@ namespace Negocio
 {
     public class AlumnoDto
     {
+        public int id { get; set; }
         string nombre;
         string apellido;
         string dni;
