@@ -52,32 +52,33 @@ namespace TPCAI_intensivo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            GestorCRUDAlumno gestorCRUDAlumno = new GestorCRUDAlumno(); 
-            if (int.TryParse(txtId.Text, out int idprofesor))
-            {
-                ProfesorDto profesor = gestorCRUDPersonal.BuscarProfesorID(idprofesor);
+            GestorCRUDAlumno gestorCRUDAlumno = new GestorCRUDAlumno();
+            /*if (int.TryParse(txtId.Text, out int idprofesor))
+                        {
+                            ProfesorDto profesor = gestorCRUDPersonal.BuscarProfesorID(idprofesor);
 
-                if (profesor != null)
-                {
-                    textBox2.Text = profesor.Nombre;
-                    textBox3.Text = profesor.Apellido;
-                    textBox4.Text = profesor.Dni;
-                    textBox5.Text = profesor.Cuit;
-                    textBox6.Text = profesor.Tipo;
+                            if (profesor != null)
+                            {
+                                txtNombre.Text = profesor.Nombre;
+                                txtApellido.Text = profesor.Apellido;
+                                txtDni.Text = profesor.Dni;
+                                tx.Text = profesor.Cuit;
+                                textBox6.Text = profesor.Tipo;
 
 
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró un profesor con ese ID.");
-                }
-            }
-            else
-            {
+                            }
+                            else
+                        {
+                                MessageBox.Show("No se encontró un profesor con ese ID.");
+                            }
+                        }
+                        else
+                        {
 
-                MessageBox.Show("Por favor, ingrese un número válido.");
-            }
+                            MessageBox.Show("Por favor, ingrese un número válido.");
+                        }
 
+            }*/
         }
 
         private void VerAlumno_Load(object sender, EventArgs e)

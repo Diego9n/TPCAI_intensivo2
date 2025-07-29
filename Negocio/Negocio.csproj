@@ -52,11 +52,15 @@
     <Compile Include="AlumnoDto.cs" />
     <Compile Include="AlumnoDtoRequest.cs" />
     <Compile Include="CarreraDto.cs" />
+    <Compile Include="GestorCarreras.cs" />
     <Compile Include="GestorCRUDAlumno.cs" />
     <Compile Include="GestorCRUDPersonal.cs" />
     <Compile Include="GestorDeSueldos.cs" />
     <Compile Include="GestorInscripciones.cs" />
     <Compile Include="GestorLogin.cs" />
+    <Compile Include="GestorMaterias.cs" />
+    <Compile Include="GestorProfesores.cs" />
+    <Compile Include="MateriaDto.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="PersonalDtoRequest.cs" />
     <Compile Include="ProfesorDto.cs" />

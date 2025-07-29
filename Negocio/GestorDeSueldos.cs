@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,110 @@ namespace Negocio
     {
         ProfesorDto ProfesorDto = new ProfesorDto();    
 
-        public SueldoPersonal CalcularSueldo()
+        public SueldoPersonal CalcularSueldo(long profesorid)
         {
+            bool profesorencontrado = false;
+            int horasSemanales = 0;
+            List<int> cursosContados = new List<int>();
+            GestorCarreras gestorCarreras = new GestorCarreras();   
+            GestorMaterias gestorMaterias = new GestorMaterias();
             SueldoPersonal sueldoPersonal = new SueldoPersonal();
+            GestorProfesores gestorProfesores = new GestorProfesores();
+            List<ProfesorDto> listaProfesores = gestorProfesores.ObtenerProfesores();   
+           
+            foreach (var profesor in listaProfesores)
+            {
+                if (profesor.Id == profesorid)
+                {
+                   
+               
+                    sueldoPersonal.Dni = profesor.Dni;
+                    sueldoPersonal.Nombre = profesor.Nombre;
+                    sueldoPersonal.Apellido = profesor.Apellido;
+                    sueldoPersonal.Cuit = profesor.Cuit;
+                    sueldoPersonal.Antiguedad = profesor.Antiguedad;
+                    sueldoPersonal.Tipo = profesor.Tipo;
+                    profesorencontrado = true;
+
+                    break;
+                   
+                }
+            }
+            if (sueldoPersonal.Tipo == "AYUDANTE_AD_HONOREM")
+            {
+                sueldoPersonal.Mensaje = ("No le corresponde sueldo porque el sueldo \n " +
+                    "                       del ayudante ad honorem es 0");
+
+            }
+            else if (profesorencontrado == true)
+            { 
+                List<CarreraDto> ListaCarreras = gestorCarreras.ObtenerCarreras();
+
+                foreach (var carreras in ListaCarreras)
+                {
+                List < MateriaDto >listaMaterias = gestorMaterias.ObtenerMaterias(carreras.Id);
+               
+                foreach (var materias in listaMaterias )
+                {
+                    List<CursoResponse> listaCursos = gestorMaterias.ObtenerCursos(materias.id);
+                    foreach (var cursos in listaCursos)
+                    {
+                            if (cursosContados.Contains(cursos.id))
+                                continue;
+                            foreach (var listaprofesores in cursos.idDocentes)
+                        {
+                            if (profesorid == listaprofesores)
+                            {   
+                               
+                                    cursosContados.Add(cursos.id);
+                                    horasSemanales = horasSemanales +  materias.horassemanales;
+                                    break;
+                                }
+
+
+                        }
+                       
+
+                    }
+
+
+
+                }
+                }
+
+                if (sueldoPersonal.Tipo == "PROFESOR")
+                {
+                    double precioHora = 7700;
+                    double coefCargo = 1.2;
+                    int tramosAntiguedad = sueldoPersonal.Antiguedad / 5;
+                    double coefAntiguedad = Math.Pow(1.1, tramosAntiguedad);
+
+                    sueldoPersonal.preciohora = precioHora;
+                    sueldoPersonal.CoeficienteSueldo = coefCargo;
+                    sueldoPersonal.Sueldo = horasSemanales * precioHora * coefCargo * coefAntiguedad;
+
+                }else if (sueldoPersonal.Tipo == "AYUDANTE")
+                {
+                    double precioHora = 7700;
+                    double coefCargo = 1.05;
+                    int tramosAntiguedad = sueldoPersonal.Antiguedad / 5;
+                    double coefAntiguedad = Math.Pow(1.1, tramosAntiguedad);
+
+                    sueldoPersonal.preciohora = precioHora;
+                    sueldoPersonal.CoeficienteSueldo = coefCargo;
+                    sueldoPersonal.Sueldo = horasSemanales * precioHora * coefCargo * coefAntiguedad;
+
+
+
+                }
+
+
+            }
+                return sueldoPersonal;
 
 
 
 
-
-
-
-            return sueldoPersonal;  
 
         }
 
