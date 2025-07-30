@@ -18,7 +18,7 @@ namespace Negocio
                nombre = alumnoRequest.nombre,
                apellido = alumnoRequest.apellido,
                dni = alumnoRequest.dni,
-               carreras = alumnoRequest.carreras
+               carrerasIds = alumnoRequest.carrerasIds
            };
             alumnopersistencia.CrearAlumno(alumnorequestdatos);
         }   
@@ -76,5 +76,19 @@ namespace Negocio
             }
             return listaDTO;
         }
+        public void ModificarAlumno(AlumnoDtoRequest alumnoRequest, int idalumno)
+        {
+            AlumnoPersistencia alumnopersistencia = new AlumnoPersistencia();
+            var alumnorequestdatos = new Datos.AlumnoRequest
+            {
+                id = alumnoRequest.id,
+                nombre = alumnoRequest.nombre,
+                apellido = alumnoRequest.apellido,
+                dni = alumnoRequest.dni,
+                carrerasIds = alumnoRequest.carrerasIds
+            };
+            alumnopersistencia.ModificarAlumno(idalumno, alumnorequestdatos);
+        }
     }
 }
+

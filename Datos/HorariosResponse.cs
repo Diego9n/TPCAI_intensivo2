@@ -8,9 +8,9 @@ namespace Datos
 {
     public class HorariosResponse
     {
-        string dia { get; set; }
-        string horaInicio { get; set; }
-        string horaFin { get; set; }
+        public string dia { get; set; }
+        public string horaInicio { get; set; }
+        public string horaFin { get; set; }
 
 
     }

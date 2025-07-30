@@ -9,9 +9,15 @@ namespace Negocio
 {
   public class MateriaDto
     {
-     public  int id { get; set; }
+        public  int id { get; set; }
         public string nombre { get; set; }
         public int horassemanales { get; set; }
         public List<MateriaDto> correlativas { get; set; }
+
+        public override string ToString()
+        {
+            return nombre;
+        }
     }
+
 }

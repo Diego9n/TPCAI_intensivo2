@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Persistencia
 {
@@ -63,7 +64,31 @@ namespace Persistencia
 
 
         }
- 
+        public void ModificarAlumno(int idalumno, AlumnoRequest alumnoRequest)
+        {
+            AlumnoRequest alumno = new AlumnoRequest();
+            alumno.id = alumnoRequest.id;   
+            alumno.nombre = alumnoRequest.nombre;
+            alumno.dni = alumnoRequest.dni;
+            alumno.apellido = alumnoRequest.apellido;
+            alumno.carrerasIds = alumnoRequest.carrerasIds;   
+
+            // Convert the data to a JSON string
+            var jsonData = JsonConvert.SerializeObject(alumno);
+
+            HttpResponseMessage response = WebHelper.Put($"tpIntensivo/alumno/{idalumno}" , jsonData);
+
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Alumno modificado correctamente.");
+            }
+            else
+            {
+                MessageBox.Show($"Error al modificar el alumno. Código: {response.StatusCode}");
+            }
+
+
+        }
 
 
     }

@@ -56,7 +56,7 @@ namespace Negocio
                
                 foreach (var materias in listaMaterias )
                 {
-                    List<CursoResponse> listaCursos = gestorMaterias.ObtenerCursos(materias.id);
+                    List<CursoResponseDto> listaCursos = gestorMaterias.ObtenerCursos(materias.id);
                     foreach (var cursos in listaCursos)
                     {
                             if (cursosContados.Contains(cursos.id))

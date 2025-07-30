@@ -36,12 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbCarrera = new System.Windows.Forms.ComboBox();
+            this.clbCarreras = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(212, 253);
+            this.button2.Location = new System.Drawing.Point(212, 327);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(128, 23);
             this.button2.TabIndex = 16;
@@ -106,20 +106,20 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "carrera";
             // 
-            // cmbCarrera
+            // clbCarreras
             // 
-            this.cmbCarrera.FormattingEnabled = true;
-            this.cmbCarrera.Location = new System.Drawing.Point(212, 200);
-            this.cmbCarrera.Name = "cmbCarrera";
-            this.cmbCarrera.Size = new System.Drawing.Size(121, 21);
-            this.cmbCarrera.TabIndex = 20;
+            this.clbCarreras.FormattingEnabled = true;
+            this.clbCarreras.Location = new System.Drawing.Point(212, 208);
+            this.clbCarreras.Name = "clbCarreras";
+            this.clbCarreras.Size = new System.Drawing.Size(231, 79);
+            this.clbCarreras.TabIndex = 20;
             // 
             // CrearAlumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cmbCarrera);
+            this.Controls.Add(this.clbCarreras);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button2);
@@ -145,6 +145,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbCarrera;
+        private System.Windows.Forms.CheckedListBox clbCarreras;
     }
 }

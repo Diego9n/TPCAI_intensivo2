@@ -35,13 +35,28 @@ namespace Negocio
             return listaDTO;
         }
 
-        public List<CursoResponse> ObtenerCursos(int Materia) 
+        public List<CursoResponseDto> ObtenerCursos(int Materia)
         {
             var listaCursos = CursoPersistencia.buscarCursosMaterias(Materia);
+            List<CursoResponseDto> listaCursosDto = new List<CursoResponseDto>();
+            foreach (var curso in listaCursos)
+            {
+                listaCursosDto.Add(new CursoResponseDto
+                {
+                    id = curso.id,
+                    profesorNombre = curso.profesorNombre,
+                    dias = curso.dias,
+                    horarios = curso.horarios.Select(h => new HorariosResponseDtocs
+                    {
+                        dia = h.dia,
+                        horaInicio = h.horaInicio,
+                        horaFin = h.horaFin
+                    }).ToList(),
+                    idDocentes = curso.idDocentes
+                });
+            }
 
-            return listaCursos;
-
-
+            return listaCursosDto;
         }
     }
 }

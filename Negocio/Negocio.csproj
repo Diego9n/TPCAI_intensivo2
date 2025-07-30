@@ -52,6 +52,7 @@
     <Compile Include="AlumnoDto.cs" />
     <Compile Include="AlumnoDtoRequest.cs" />
     <Compile Include="CarreraDto.cs" />
+    <Compile Include="CursoResponseDto.cs" />
     <Compile Include="GestorCarreras.cs" />
     <Compile Include="GestorCRUDAlumno.cs" />
     <Compile Include="GestorCRUDPersonal.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="GestorLogin.cs" />
     <Compile Include="GestorMaterias.cs" />
     <Compile Include="GestorProfesores.cs" />
+    <Compile Include="HorariosResponseDtocs.cs" />
     <Compile Include="MateriaDto.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="PersonalDtoRequest.cs" />
