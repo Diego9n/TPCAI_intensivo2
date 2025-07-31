@@ -50,14 +50,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlumnoDto.cs" />
+    <Compile Include="AlumnoDtoRequest.cs" />
     <Compile Include="CarreraDto.cs" />
+    <Compile Include="CursoResponseDto.cs" />
+    <Compile Include="GestorCarreras.cs" />
+    <Compile Include="GestorCRUDAlumno.cs" />
+    <Compile Include="GestorCRUDPersonal.cs" />
+    <Compile Include="GestorDeSueldos.cs" />
     <Compile Include="GestorInscripciones.cs" />
     <Compile Include="GestorLogin.cs" />
-    <Compile Include="MateriaAlumnoDto.cs" />
-    <Compile Include="MateriaDto.cs" />
-    <Compile Include="Persona.cs" />
+  <Compile Include="GestorMaterias.cs" />
+  <Compile Include="GestorProfesores.cs" />
+<Compile Include="HorariosResponseDtocs.cs" />
+<Compile Include="MateriaAlumnoDto.cs" />
+<Compile Include="MateriaDto.cs" />
+<Compile Include="Persona.cs" />
+
+    <Compile Include="PersonalDtoRequest.cs" />
     <Compile Include="ProfesorDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SueldoPersonal.cs" />
     <Compile Include="UsuarioDto.cs" />
     <Compile Include="Validaciones.cs" />
     <Compile Include="Validar.cs" />

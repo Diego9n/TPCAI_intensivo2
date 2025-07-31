@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AlumnoPersistencia.cs" />
     <Compile Include="CarreraPersistencia.cs" />
+    <Compile Include="CursoPersistencia.cs" />
     <Compile Include="LoginPersistencia.cs" />
     <Compile Include="MateriaPersistencia.cs" />
     <Compile Include="ProfesorPersistencia.cs" />

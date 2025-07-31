@@ -11,21 +11,20 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    public class MateriaPersistencia
+    public class CursoPersistencia
     {
-        public List<MateriaResponse> buscarDatosUsuario(int idcarrera)
+        public List<CursoResponse> buscarCursosMaterias(int idMateria)
         {
-            int idCarrera = idcarrera;
-            List<MateriaResponse> materias = new List<MateriaResponse>();
+            List<CursoResponse> materias = new List<CursoResponse>();
 
-            HttpResponseMessage response = WebHelper.Get($"tpIntensivo/materias/{idCarrera}");
+            HttpResponseMessage response = WebHelper.Get($"tpIntensivo/cursos/{idMateria}");
 
             if (response.IsSuccessStatusCode)
             {
                 var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result);
                 string json = reader.ReadToEnd();
 
-                materias = JsonConvert.DeserializeObject<List<MateriaResponse>>(json);
+                materias = JsonConvert.DeserializeObject<List<CursoResponse>>(json);
             }
             else
             {
@@ -37,7 +36,5 @@ namespace Persistencia
 
 
         }
-
-
     }
 }

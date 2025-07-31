@@ -8,15 +8,10 @@ namespace Negocio
 {
     public class AlumnoDto
     {
-        string nombre;
-        string apellido;
-        string dni;
-        List<int> carrerasIds;
-        public int Id { get; set; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
-        public string Dni { get => dni; set => dni = value; }
-        public List<int> CarrerasIds { get => carrerasIds; set => carrerasIds = value; }
-
+      public int Id { get; set; }
+      public string Nombre { get; set; }
+      public string Apellido { get; set; }
+      public string Dni { get; set; }
+      public List<int> CarrerasIds { get; set; }
     }
 }
