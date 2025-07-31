@@ -44,6 +44,7 @@
             this.btnEgresados.TabIndex = 0;
             this.btnEgresados.Text = "Generar reporte de Graduados";
             this.btnEgresados.UseVisualStyleBackColor = true;
+            this.btnEgresados.Click += new System.EventHandler(this.btnEgresados_Click);
             // 
             // btnDocentes
             // 

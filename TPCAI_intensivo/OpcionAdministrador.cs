@@ -49,5 +49,11 @@ namespace TPCAI_intensivo
             moduloAdministracionPersonal.Show();    
             this.Hide();
         }
+
+        private void btnEgresados_Click(object sender, EventArgs e)
+        {
+            ModuloEgresados formEgresados = new ModuloEgresados();
+            formEgresados.Show();
+        }
     }
 }

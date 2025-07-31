@@ -23,8 +23,5 @@ namespace Negocio
         public string Dni { get => _dni; set => _dni = value; }
         public int Antiguedad { get => _antiguedad; set => _antiguedad = value; }
         public string Tipo { get => _tipo; set => _tipo = value; }
-
-        
-        
     }
 }
