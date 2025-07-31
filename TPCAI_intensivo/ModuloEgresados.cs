@@ -156,4 +156,3 @@ namespace TPCAI_intensivo
         public double Promedio { get; set; }
         public string TituloHonorifico { get; set; }
     }
-
