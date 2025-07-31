@@ -59,11 +59,13 @@
     <Compile Include="GestorDeSueldos.cs" />
     <Compile Include="GestorInscripciones.cs" />
     <Compile Include="GestorLogin.cs" />
-    <Compile Include="GestorMaterias.cs" />
-    <Compile Include="GestorProfesores.cs" />
-    <Compile Include="HorariosResponseDtocs.cs" />
-    <Compile Include="MateriaDto.cs" />
-    <Compile Include="Persona.cs" />
+  <Compile Include="GestorMaterias.cs" />
+  <Compile Include="GestorProfesores.cs" />
+<Compile Include="HorariosResponseDtocs.cs" />
+<Compile Include="MateriaAlumnoDto.cs" />
+<Compile Include="MateriaDto.cs" />
+<Compile Include="Persona.cs" />
+
     <Compile Include="PersonalDtoRequest.cs" />
     <Compile Include="ProfesorDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,7 +12,7 @@ namespace Persistencia
 {
     public class CarreraPersistencia
     {
-        
+
         public List<CarreraResponse> buscarDatosUsuario()
         {
             List<CarreraResponse> carreras = new List<CarreraResponse>();
@@ -33,6 +33,34 @@ namespace Persistencia
 
             return carreras;
         }
-        
+        public List<MateriaResponse> ObtenerMateriasPorCarrera(int carreraId)
+        {
+            try
+            {
+                // Hacemos la llamada a la API
+                HttpResponseMessage response = WebHelper.Get($"tpIntensivo/materias/{carreraId}");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new List<MateriaResponse>();
+                }
+
+                var contentStream = response.Content.ReadAsStringAsync().Result;
+                var listaMaterias = JsonConvert.DeserializeObject<List<MateriaResponse>>(contentStream);
+
+                if (listaMaterias == null)
+                {
+                    return new List<MateriaResponse>();
+                }
+
+                return listaMaterias;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener/deserializar materias: {ex.Message}");
+                return new List<MateriaResponse>();
+            }
+
+        }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class MateriaResponse
-    {
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public int horassemanales { get; set; }
-        public List<MateriaResponse> correlativas { get; set; }
+  public class MateriaResponse
+  {
+    public int Id { get; set; }
+    public string Nombre { get; set; }
+    public int HorasSemanales { get; set; }
+    public List<MateriaResponse> Correlativas { get; set; }
+  }
 
-    }
 }

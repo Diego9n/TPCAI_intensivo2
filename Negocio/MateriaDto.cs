@@ -1,23 +1,20 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Negocio
 {
-  public class MateriaDto
+    public class MateriaDto
     {
-        public  int id { get; set; }
-        public string nombre { get; set; }
-        public int horassemanales { get; set; }
-        public List<MateriaDto> correlativas { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public int HorasSemanales { get; set; }
+        public List<MateriaDto> Correlativas { get; set; }
 
         public override string ToString()
         {
-            return nombre;
+            return Nombre;
         }
     }
-
 }
