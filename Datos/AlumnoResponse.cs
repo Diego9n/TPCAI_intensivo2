@@ -8,6 +8,7 @@ namespace Datos
 {
     public class AlumnoResponse
     {
+        public int Id { get; set; }
         string nombre;
         string apellido;
         string dni;

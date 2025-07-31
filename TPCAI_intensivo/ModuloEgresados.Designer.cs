@@ -70,7 +70,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 68);
+            this.label2.Location = new System.Drawing.Point(27, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 13);
             this.label2.TabIndex = 8;
@@ -79,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(359, 67);
+            this.label3.Location = new System.Drawing.Point(344, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 9;
@@ -88,17 +88,17 @@
             // dgvTodosLosEgresados
             // 
             this.dgvTodosLosEgresados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTodosLosEgresados.Location = new System.Drawing.Point(27, 87);
+            this.dgvTodosLosEgresados.Location = new System.Drawing.Point(27, 81);
             this.dgvTodosLosEgresados.Name = "dgvTodosLosEgresados";
-            this.dgvTodosLosEgresados.Size = new System.Drawing.Size(309, 255);
+            this.dgvTodosLosEgresados.Size = new System.Drawing.Size(314, 317);
             this.dgvTodosLosEgresados.TabIndex = 5;
             // 
             // dgvTitulosHonorificos
             // 
             this.dgvTitulosHonorificos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTitulosHonorificos.Location = new System.Drawing.Point(359, 87);
+            this.dgvTitulosHonorificos.Location = new System.Drawing.Point(347, 81);
             this.dgvTitulosHonorificos.Name = "dgvTitulosHonorificos";
-            this.dgvTitulosHonorificos.Size = new System.Drawing.Size(315, 255);
+            this.dgvTitulosHonorificos.Size = new System.Drawing.Size(327, 317);
             this.dgvTitulosHonorificos.TabIndex = 7;
             // 
             // ModuloEgresados

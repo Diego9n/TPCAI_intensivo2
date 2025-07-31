@@ -11,11 +11,11 @@ namespace Datos
         int id;
         string nombre;
         int horasSemanales;
-        List<string> correlativas;
+        List<MateriaResponse> correlativas;
 
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public int HorasSemanales { get => horasSemanales; set => horasSemanales = value; }
-        public List<string> Correlativas { get => correlativas; set => correlativas = value; }
+        public List<MateriaResponse> Correlativas { get => correlativas; set => correlativas = value; }
     }
 }

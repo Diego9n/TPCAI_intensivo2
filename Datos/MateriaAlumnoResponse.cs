@@ -11,6 +11,6 @@ namespace Datos
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Condicion { get; set; }
-        public int Nota { get; set; }
+        public int? Nota { get; set; }
     }
 }

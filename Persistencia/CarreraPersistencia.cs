@@ -35,31 +35,32 @@ namespace Persistencia
         }
         public List<MateriaResponse> ObtenerMateriasPorCarrera(int carreraId)
         {
-            HttpResponseMessage response = WebHelper.Get($"tpIntensivo/materias/{carreraId}");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var contentStream = response.Content.ReadAsStringAsync().Result;
-                var settings = new JsonSerializerSettings
+                // Hacemos la llamada a la API
+                HttpResponseMessage response = WebHelper.Get($"tpIntensivo/materias/{carreraId}");
+
+                if (!response.IsSuccessStatusCode)
                 {
-                    Error = (sender, args) =>
-                    {
-                        args.ErrorContext.Handled = true;
-                    }
-                };
-                var listaMaterias = JsonConvert.DeserializeObject<List<MateriaResponse>>(contentStream, settings);
-                foreach (var materia in listaMaterias)
-                {
-                    if (materia.Correlativas == null)
-                    {
-                        materia.Correlativas = new List<string>();
-                    }
+                    return new List<MateriaResponse>();
                 }
+
+                var contentStream = response.Content.ReadAsStringAsync().Result;
+                var listaMaterias = JsonConvert.DeserializeObject<List<MateriaResponse>>(contentStream);
+
+                if (listaMaterias == null)
+                {
+                    return new List<MateriaResponse>();
+                }
+
                 return listaMaterias;
             }
-            else
+            catch (Exception ex)
             {
-                throw new Exception($"Error al buscar las materias de la carrera. Código de estado: {response.StatusCode}");
+                Console.WriteLine($"Error al obtener/deserializar materias: {ex.Message}");
+                return new List<MateriaResponse>();
             }
+
         }
     }
 }

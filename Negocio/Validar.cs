@@ -65,6 +65,7 @@ namespace Negocio
             {
                 listaDTO.Add(new AlumnoDto
                 {
+                    Id = alumno.Id,
                     Nombre = alumno.Nombre,
                     Apellido = alumno.Apellido,
                     Dni = alumno.Dni,
