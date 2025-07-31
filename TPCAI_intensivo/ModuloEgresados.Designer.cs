@@ -100,14 +100,14 @@
             this.dgvTitulosHonorificos.Location = new System.Drawing.Point(385, 81);
             this.dgvTitulosHonorificos.Name = "dgvTitulosHonorificos";
             this.dgvTitulosHonorificos.ReadOnly = true;
-            this.dgvTitulosHonorificos.Size = new System.Drawing.Size(505, 317);
+            this.dgvTitulosHonorificos.Size = new System.Drawing.Size(583, 317);
             this.dgvTitulosHonorificos.TabIndex = 7;
             // 
             // ModuloEgresados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 416);
+            this.ClientSize = new System.Drawing.Size(996, 416);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvTitulosHonorificos);

@@ -124,7 +124,7 @@ namespace TPCAI_intensivo
             return idsMateriasRequeridas.IsSubsetOf(idsMateriasAprobadas);
         }
 
-        // MÉTODO PARA CALCULAR EL PROMEDIO
+        // METODO PARA CALCULAR EL PROMEDIO
         public double CalcularPromedio(List<MateriaAlumnoDto> materiasDelAlumno)
         {
             var materiasAprobadasConNota = materiasDelAlumno.Where(m => m.Condicion != null &&
@@ -135,7 +135,7 @@ namespace TPCAI_intensivo
             return materiasAprobadasConNota.Average(m => m.Nota.Value);
         }
 
-        // MÉTODO PARA DETERMINAR EL TÍTULO HONORÍFICO
+        // METODO PARA DETERMINAR EL TÍTULO HONORÍFICO
         public string ObtenerTituloHonorifico(double promedio)
         {
             if (promedio == 10.00)
