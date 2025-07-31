@@ -49,7 +49,7 @@ namespace TPCAI_intensivo
                 MessageBox.Show("Por favor, seleccione una carrera.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
             try
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -75,11 +75,15 @@ namespace TPCAI_intensivo
                         List<MateriaAlumnoDto> materiasDelAlumno = gestorNegocio.ObtenerMateriasDeAlumno(alumno.Id);
                         if (EsEgresado(materiasRequeridas, materiasDelAlumno))
                         {
+                            double promedio = CalcularPromedio(materiasDelAlumno);
+                            string titulo = ObtenerTituloHonorifico(promedio);
                             listaDeEgresados.Add(new EgresadoReporte
                             {
                                 Nombre = alumno.Nombre,
                                 Apellido = alumno.Apellido,
-                                DNI = alumno.Dni
+                                DNI = alumno.Dni,
+                                Promedio = Math.Round(promedio, 2),
+                                TituloHonorifico = titulo
                             });
                         }
                     }
@@ -91,6 +95,10 @@ namespace TPCAI_intensivo
                     return;
                 }
                 dgvTodosLosEgresados.DataSource = listaDeEgresados;
+                dgvTodosLosEgresados.Columns["Promedio"].Visible = false;
+                dgvTodosLosEgresados.Columns["TituloHonorifico"].Visible = false;
+                var egresadosConHonor = listaDeEgresados.Where(eh => eh.TituloHonorifico != "Ninguno").ToList();
+                dgvTitulosHonorificos.DataSource = egresadosConHonor;
             }
             catch (Exception ex)
             {
@@ -115,12 +123,37 @@ namespace TPCAI_intensivo
 
             return idsMateriasRequeridas.IsSubsetOf(idsMateriasAprobadas);
         }
+
+        // MÉTODO PARA CALCULAR EL PROMEDIO
+        public double CalcularPromedio(List<MateriaAlumnoDto> materiasDelAlumno)
+        {
+            var materiasAprobadasConNota = materiasDelAlumno.Where(m => m.Condicion != null &&
+            m.Condicion.Trim().Equals("APROBADO", StringComparison.OrdinalIgnoreCase) && m.Nota.HasValue);
+
+            if (!materiasAprobadasConNota.Any())
+            { return 0; }
+            return materiasAprobadasConNota.Average(m => m.Nota.Value);
+        }
+
+        // MÉTODO PARA DETERMINAR EL TÍTULO HONORÍFICO
+        public string ObtenerTituloHonorifico(double promedio)
+        {
+            if (promedio == 10.00)
+            { return "Summa Cum Laude"; }
+            if (promedio >= 9.00)
+            { return "Magna Cum Laude"; }
+            if (promedio >= 8.00)
+            { return "Cum Laude"; }
+            return "Ninguno";
+        }
     }
+}
     public class EgresadoReporte
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string DNI { get; set; }
+        public double Promedio { get; set; }
+        public string TituloHonorifico { get; set; }
     }
-}
 
