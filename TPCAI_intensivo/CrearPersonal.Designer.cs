@@ -55,7 +55,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(151, 174);
+            this.textBox5.Location = new System.Drawing.Point(156, 173);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(226, 20);
             this.textBox5.TabIndex = 32;
@@ -63,7 +63,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 173);
+            this.label5.Location = new System.Drawing.Point(58, 172);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 31;
@@ -71,7 +71,7 @@
             // 
             // btnCrearPersonal
             // 
-            this.btnCrearPersonal.Location = new System.Drawing.Point(300, 485);
+            this.btnCrearPersonal.Location = new System.Drawing.Point(305, 484);
             this.btnCrearPersonal.Name = "btnCrearPersonal";
             this.btnCrearPersonal.Size = new System.Drawing.Size(128, 23);
             this.btnCrearPersonal.TabIndex = 30;
@@ -81,21 +81,21 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(151, 79);
+            this.textBox4.Location = new System.Drawing.Point(156, 78);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(226, 20);
             this.textBox4.TabIndex = 29;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(151, 129);
+            this.textBox3.Location = new System.Drawing.Point(156, 128);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(226, 20);
             this.textBox3.TabIndex = 28;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(151, 37);
+            this.textBox2.Location = new System.Drawing.Point(156, 36);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(226, 20);
             this.textBox2.TabIndex = 27;
@@ -103,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 132);
+            this.label4.Location = new System.Drawing.Point(58, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 26;
@@ -112,7 +112,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 82);
+            this.label3.Location = new System.Drawing.Point(58, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 25;
@@ -121,7 +121,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 40);
+            this.label2.Location = new System.Drawing.Point(58, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 24;
@@ -130,7 +130,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(151, 228);
+            this.comboBox1.Location = new System.Drawing.Point(156, 227);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(226, 21);
             this.comboBox1.TabIndex = 41;
@@ -139,7 +139,7 @@
             // lblCursos
             // 
             this.lblCursos.AutoSize = true;
-            this.lblCursos.Location = new System.Drawing.Point(432, 33);
+            this.lblCursos.Location = new System.Drawing.Point(442, 227);
             this.lblCursos.Name = "lblCursos";
             this.lblCursos.Size = new System.Drawing.Size(159, 13);
             this.lblCursos.TabIndex = 39;
@@ -148,7 +148,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 227);
+            this.label1.Location = new System.Drawing.Point(62, 226);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 38;
@@ -156,7 +156,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(75, 485);
+            this.button1.Location = new System.Drawing.Point(80, 484);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(175, 23);
             this.button1.TabIndex = 42;
@@ -173,7 +173,7 @@
             this.groupBox1.Controls.Add(this.comboBox4);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Location = new System.Drawing.Point(56, 264);
+            this.groupBox1.Location = new System.Drawing.Point(61, 263);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(372, 215);
             this.groupBox1.TabIndex = 43;
@@ -247,19 +247,20 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox1.Location = new System.Drawing.Point(435, 59);
+            this.textBox1.Location = new System.Drawing.Point(445, 256);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(334, 449);
+            this.textBox1.Size = new System.Drawing.Size(334, 251);
             this.textBox1.TabIndex = 44;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // CrearPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 526);
+            this.ClientSize = new System.Drawing.Size(938, 651);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);

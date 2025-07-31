@@ -27,6 +27,7 @@ namespace TPCAI_intensivo
 
         private void CrearPersonal_Load(object sender, EventArgs e)
         {
+         
             CargaInical();
     
 
@@ -70,8 +71,8 @@ namespace TPCAI_intensivo
             PersonalDtoRequest personalDtoRequest = new PersonalDtoRequest
             {
                 Nombre = textBox2.Text,
-                Apellido = textBox3.Text,
-                Dni = textBox4.Text,
+                Apellido = textBox4.Text,
+                Dni = textBox3.Text,
                 Cuit = textBox5.Text,
                 Tipo = comboBox1.Text,
                 Cursos = cursosSeleccionadosIds
@@ -224,6 +225,15 @@ namespace TPCAI_intensivo
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
+        
+      
 }
 
