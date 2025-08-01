@@ -59,13 +59,6 @@ namespace TPCAI_intensivo
                     textBox4.Text = profesor.Dni;
                     textBox5.Text = profesor.Cuit;
                     textBox6.Text = profesor.Tipo;
-                    foreach (var cursos in profesor.)
-                    {
-                        // Aquí podrías agregar lógica para mostrar los cursos si es necesario
-                        // Por ejemplo, podrías llenar un ListBox o ComboBox con los cursos
-                    }
-
-
                 }
                 else
                 {

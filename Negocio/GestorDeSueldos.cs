@@ -42,8 +42,7 @@ namespace Negocio
             }
             if (sueldoPersonal.Tipo == "AYUDANTE_AD_HONOREM")
             {
-                sueldoPersonal.Mensaje = ("No le corresponde sueldo porque el sueldo \n " +
-                    "                       del ayudante ad honorem es 0");
+                sueldoPersonal.Mensaje = ("El ayudante ad honorem no percibe remuneracion");
 
             }
             else if (profesorencontrado == true)
@@ -56,7 +55,7 @@ namespace Negocio
                
                 foreach (var materias in listaMaterias )
                 {
-                    List<CursoResponseDto> listaCursos = gestorMaterias.ObtenerCursos(materias.id);
+                    List<CursoResponseDto> listaCursos = gestorMaterias.ObtenerCursos(materias.Id);
                     foreach (var cursos in listaCursos)
                     {
                             if (cursosContados.Contains(cursos.id))
@@ -67,7 +66,7 @@ namespace Negocio
                             {   
                                
                                     cursosContados.Add(cursos.id);
-                                    horasSemanales = horasSemanales +  materias.horassemanales;
+                                    horasSemanales = horasSemanales +  materias.HorasSemanales;
                                     break;
                                 }
 

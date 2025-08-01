@@ -169,7 +169,7 @@ namespace TPCAI_intensivo
             if (comboBox3.SelectedItem != null)
             {
                 MateriaDto materiaSeleccionada = (MateriaDto)comboBox3.SelectedItem;
-                int idMateria = materiaSeleccionada.id;
+                int idMateria = materiaSeleccionada.Id;
                 var cursos = gestorMaterias.ObtenerCursos(idMateria);
                 foreach (var curso in cursos)
                 {

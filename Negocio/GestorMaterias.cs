@@ -25,9 +25,9 @@ namespace Negocio
             {
                 listaDTO.Add(new MateriaDto
                 {
-                    id = (int)materia.id,
-                    nombre = materia.nombre,
-                    horassemanales = materia.horassemanales,
+                    Id = (int)materia.Id,
+                    Nombre = materia.Nombre,
+                    HorasSemanales = materia.HorasSemanales,
 
                 });
             }

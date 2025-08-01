@@ -24,13 +24,15 @@ namespace TPCAI_intensivo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             long profesorid;
             profesorid = usuarioDto.Id; 
             GestorDeSueldos gestorDeSueldos = new GestorDeSueldos();
             SueldoPersonal sueldo = new SueldoPersonal();
             sueldo = gestorDeSueldos.CalcularSueldo(profesorid);
+
             if (sueldo.Sueldo != 0)
-            { 
+            {
                 label1.Text =
                               "Nombre: " + sueldo.Nombre + "\n" +
                               "Apellido: " + sueldo.Apellido + "\n" +
@@ -41,10 +43,10 @@ namespace TPCAI_intensivo
                               "sueldo : $ " + sueldo.Sueldo + "\n";
             } else if (sueldo.Sueldo == 0)
             {
-
                 label1.Text = sueldo.Mensaje;
 
             }
+            this.Cursor = Cursors.Default;
         }
         private void label1_Click(object sender, EventArgs e)
         {
