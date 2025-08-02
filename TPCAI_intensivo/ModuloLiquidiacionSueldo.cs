@@ -18,13 +18,16 @@ namespace TPCAI_intensivo
         public ModuloLiquidiacionSueldo(UsuarioDto usuariodto)
         {
             InitializeComponent();
-            label1.Text = "Bienvenido " + usuariodto.PerfilUsuario + " " + usuariodto.Id;
+            label1.Text = " Usuario :  " + usuariodto.Id  +  "\n" +
+                          " Perfil :  " + usuariodto.PerfilUsuario;
             usuarioDto.Id = usuariodto.Id;  
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            label1.Text = "Cargando datos, por favor espere...";
             this.Cursor = Cursors.WaitCursor;
+            Application.DoEvents(); 
             long profesorid;
             profesorid = usuarioDto.Id; 
             GestorDeSueldos gestorDeSueldos = new GestorDeSueldos();
@@ -33,6 +36,7 @@ namespace TPCAI_intensivo
 
             if (sueldo.Sueldo != 0)
             {
+                label1.Font = new Font(label1.Font.FontFamily, 12, label1.Font.Style);
                 label1.Text =
                               "Nombre: " + sueldo.Nombre + "\n" +
                               "Apellido: " + sueldo.Apellido + "\n" +
@@ -43,20 +47,14 @@ namespace TPCAI_intensivo
                               "sueldo : $ " + sueldo.Sueldo + "\n";
             } else if (sueldo.Sueldo == 0)
             {
+                label1.Font =  new Font(label1.Font.FontFamily, 9, label1.Font.Style);
                 label1.Text = sueldo.Mensaje;
 
             }
             this.Cursor = Cursors.Default;
         }
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void ModuloLiquidiacionSueldo_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {

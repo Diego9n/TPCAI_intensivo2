@@ -13,15 +13,24 @@ namespace TPCAI_intensivo
 {
     public partial class ModuloDesbloquearUsuario : Form
     {
-        public ModuloDesbloquearUsuario()
+        UsuarioDto UsuarioDto;
+        public ModuloDesbloquearUsuario(UsuarioDto usuarioDto)
         {
             InitializeComponent();
+            UsuarioDto = usuarioDto;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             GestorLogin login = new GestorLogin();
             login.DesbloquearUsuario(int.Parse(textBox1.Text)); 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpcionAdministrador opcionAdministrador = new OpcionAdministrador(UsuarioDto);
+            opcionAdministrador.Show();
+            this.Hide();
         }
     }
 }

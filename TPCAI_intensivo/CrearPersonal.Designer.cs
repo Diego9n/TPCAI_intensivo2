@@ -38,7 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lblCursos = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -50,12 +49,16 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(156, 173);
+            this.textBox5.Location = new System.Drawing.Point(129, 178);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(226, 20);
             this.textBox5.TabIndex = 32;
@@ -63,7 +66,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(58, 172);
+            this.label5.Location = new System.Drawing.Point(31, 185);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 31;
@@ -71,7 +74,7 @@
             // 
             // btnCrearPersonal
             // 
-            this.btnCrearPersonal.Location = new System.Drawing.Point(305, 484);
+            this.btnCrearPersonal.Location = new System.Drawing.Point(305, 523);
             this.btnCrearPersonal.Name = "btnCrearPersonal";
             this.btnCrearPersonal.Size = new System.Drawing.Size(128, 23);
             this.btnCrearPersonal.TabIndex = 30;
@@ -81,21 +84,21 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(156, 78);
+            this.textBox4.Location = new System.Drawing.Point(129, 83);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(226, 20);
             this.textBox4.TabIndex = 29;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(156, 128);
+            this.textBox3.Location = new System.Drawing.Point(129, 133);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(226, 20);
             this.textBox3.TabIndex = 28;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(156, 36);
+            this.textBox2.Location = new System.Drawing.Point(129, 41);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(226, 20);
             this.textBox2.TabIndex = 27;
@@ -103,7 +106,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(58, 131);
+            this.label4.Location = new System.Drawing.Point(31, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 26;
@@ -112,7 +115,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 81);
+            this.label3.Location = new System.Drawing.Point(31, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 25;
@@ -121,7 +124,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 39);
+            this.label2.Location = new System.Drawing.Point(31, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 24;
@@ -130,25 +133,16 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(156, 227);
+            this.comboBox1.Location = new System.Drawing.Point(129, 232);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(226, 21);
             this.comboBox1.TabIndex = 41;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // lblCursos
-            // 
-            this.lblCursos.AutoSize = true;
-            this.lblCursos.Location = new System.Drawing.Point(442, 227);
-            this.lblCursos.Name = "lblCursos";
-            this.lblCursos.Size = new System.Drawing.Size(159, 13);
-            this.lblCursos.TabIndex = 39;
-            this.lblCursos.Text = "Cursos Disponibles para agregar";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 226);
+            this.label1.Location = new System.Drawing.Point(31, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 38;
@@ -156,7 +150,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(80, 484);
+            this.button1.Location = new System.Drawing.Point(80, 523);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(175, 23);
             this.button1.TabIndex = 42;
@@ -173,12 +167,12 @@
             this.groupBox1.Controls.Add(this.comboBox4);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Location = new System.Drawing.Point(61, 263);
+            this.groupBox1.Location = new System.Drawing.Point(6, 272);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(372, 215);
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Selecione el curso";
+            this.groupBox1.Text = "Selecione al menos un curso ";
             // 
             // button2
             // 
@@ -247,7 +241,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox1.Location = new System.Drawing.Point(445, 256);
+            this.textBox1.Location = new System.Drawing.Point(6, 23);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -256,33 +250,57 @@
             this.textBox1.TabIndex = 44;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Location = new System.Drawing.Point(462, 266);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(347, 280);
+            this.groupBox2.TabIndex = 45;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Cursos diponibles para agregar";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.groupBox1);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Location = new System.Drawing.Point(61, 15);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(385, 502);
+            this.groupBox3.TabIndex = 46;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "ingresar datos requeridos ";
+            // 
             // CrearPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(938, 651);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(841, 571);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.lblCursos);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnCrearPersonal);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CrearPersonal";
-            this.Text = "CrearPersonal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Crear Personal";
             this.Load += new System.EventHandler(this.CrearPersonal_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -297,7 +315,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label lblCursos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -309,5 +326,7 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

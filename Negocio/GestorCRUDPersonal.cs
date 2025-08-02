@@ -26,7 +26,7 @@ namespace Negocio
                     profesorDto.Dni = profesor.Dni;
                     profesorDto.Antiguedad = profesor.Antiguedad;
                     profesorDto.Tipo = profesor.Tipo;
-                    break; // Salir del bucle una vez encontrado
+                    break; 
                 }
             }
             return profesorDto;

@@ -25,9 +25,16 @@ namespace Negocio
         public void EliminarAlumno(int ideliminar)
         {
             AlumnoPersistencia alumnopersistencia = new AlumnoPersistencia();
-            alumnopersistencia.EliminarAlumno(ideliminar);
-        }   
-     
+            try
+            {
+                alumnopersistencia.EliminarAlumno(ideliminar);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar el alummno: " + ex.Message);
+            }
+        }
+
         public AlumnoDto BuscarAlumnoID(int id) 
         {
             AlumnoDto alumnoDto = new AlumnoDto();

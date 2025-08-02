@@ -12,8 +12,8 @@ using System.Windows.Forms;
 namespace TPCAI_intensivo
 {
     public partial class ModuloAdministracionPersonal : Form
-    { 
-        UsuarioDto UsuarioDto { get; set; }
+    {
+        UsuarioDto UsuarioDto;
         public ModuloAdministracionPersonal(UsuarioDto usuarioDto)
 
         {
@@ -23,18 +23,10 @@ namespace TPCAI_intensivo
 
         private void ModuloAdministracionPersonas_Load(object sender, EventArgs e)
         {
-
-
-
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            label1.Text = "Usuario : " + UsuarioDto.Id + "\n" +
+                          "Perfil: " + UsuarioDto.PerfilUsuario;
 
         }
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -49,5 +41,14 @@ namespace TPCAI_intensivo
             crearPersonal.Show();
             this.Hide();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpcionAdministrador opcionAdministrador = new OpcionAdministrador(UsuarioDto);
+            opcionAdministrador.Show();
+            this.Hide();
+        }
+
+ 
     }
 }

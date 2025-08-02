@@ -42,7 +42,14 @@ namespace Negocio
             }
             if (sueldoPersonal.Tipo == "AYUDANTE_AD_HONOREM")
             {
-                sueldoPersonal.Mensaje = ("El ayudante ad honorem no percibe remuneracion");
+                sueldoPersonal.Mensaje = ("El cargo de ayudante ad honorem se ejerce con carácter" + "\n" +
+                                          "no rentado sin derecho a percepción de haberes ni" + "\n" +
+                                          "compensacion economica ni genera vínculo laboral con " + "\n" +
+                                          "la institución. No obstante su aporte voluntario es " + " \n" +
+                                          "especialmente valorado y agradecido por esta casa de  " + "\n" +
+                                          "estudios en reconocimiento al compromiso académico y "+ "\n" +
+                                          "al espíritu de colaboración con la formación universitaria."
+                                          );
 
             }
             else if (profesorencontrado == true)

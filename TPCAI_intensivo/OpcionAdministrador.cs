@@ -13,11 +13,11 @@ namespace TPCAI_intensivo
 {
     public partial class OpcionAdministrador : Form
     {
-        UsuarioDto usuarioDto { get; set; }
+        UsuarioDto UsuarioDto;
         public OpcionAdministrador(UsuarioDto usuario)
         {
             InitializeComponent();
-            UsuarioDto usuarioDto;
+            UsuarioDto = usuario;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,24 +29,19 @@ namespace TPCAI_intensivo
 
         private void OpcionAdministrador_Load(object sender, EventArgs e)
         {
-
+            label1.Text = "Usuario :  " + UsuarioDto.Id + " Perfil :  " + UsuarioDto.PerfilUsuario;
         }
 
         private void btnAlumno_Click(object sender, EventArgs e)
         {
-           ModuloAdministracionAlumno moduloAdministracionAlumno = new ModuloAdministracionAlumno();
+           ModuloAdministracionAlumno moduloAdministracionAlumno = new ModuloAdministracionAlumno(UsuarioDto);
             moduloAdministracionAlumno.Show();
             this.Hide();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-        }
-
-
         private void btnDocentes_Click(object sender, EventArgs e)
         {
-            ModuloAdministracionPersonal moduloAdministracionPersonal = new ModuloAdministracionPersonal(usuarioDto);
+            ModuloAdministracionPersonal moduloAdministracionPersonal = new ModuloAdministracionPersonal(UsuarioDto);
             moduloAdministracionPersonal.Show();    
             this.Hide();
 
@@ -56,6 +51,13 @@ namespace TPCAI_intensivo
         {
             ModuloEgresados formEgresados = new ModuloEgresados();
             formEgresados.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ModuloDesbloquearUsuario moduloDesbloquearUsuario = new ModuloDesbloquearUsuario(UsuarioDto);
+            moduloDesbloquearUsuario.Show();
+            this.Hide();
         }
     }
 }

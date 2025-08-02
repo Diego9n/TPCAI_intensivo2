@@ -1,5 +1,6 @@
 ﻿using Datos;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Persistencia.utils;
 using System;
 using System.Collections.Generic;
@@ -54,13 +55,13 @@ namespace Persistencia
         {
             HttpResponseMessage response = WebHelper.Delete($"tpIntensivo/alumno/{ideliminar}");
 
-            if (response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Alumno eliminado correctamente.");
-            }
-            else
-            {
-                MessageBox.Show($"Error al eliminar el alumno. Código: {response.StatusCode}");
+                string errorContent = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                Console.WriteLine("Detalle del error del servidor:");
+                Console.WriteLine(errorContent);
+                throw new Exception("Error al intentar eliminar el alumno.");
             }
 
 
@@ -79,13 +80,13 @@ namespace Persistencia
 
             HttpResponseMessage response = WebHelper.Put($"tpIntensivo/alumno/{idalumno}" , jsonData);
 
-            if (response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Alumno modificado correctamente.");
-            }
-            else
-            {
-                MessageBox.Show($"Error al modificar el alumno. Código: {response.StatusCode}");
+                string errorContent = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                Console.WriteLine("Detalle del error del servidor:");
+                Console.WriteLine(errorContent);
+                throw new Exception("Error al intentar eliminar el alumno.");
             }
 
 

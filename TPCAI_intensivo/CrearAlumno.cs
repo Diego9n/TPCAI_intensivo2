@@ -14,9 +14,11 @@ namespace TPCAI_intensivo
 {
     public partial class CrearAlumno : Form
     {
-        public CrearAlumno()
+        UsuarioDto UsuarioDto;  
+        public CrearAlumno(UsuarioDto usuarioDto)
         {
             InitializeComponent();
+            UsuarioDto = usuarioDto;
         }
 
         private void CrearAlumno_Load(object sender, EventArgs e)
@@ -33,24 +35,34 @@ namespace TPCAI_intensivo
 
         }
 
-        
-
         private void button2_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-               string.IsNullOrWhiteSpace(txtApellido.Text) ||
-               string.IsNullOrWhiteSpace(txtDni.Text))
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) )
+                {
+                MessageBox.Show("Debe completar el campo Nombre.");
+                txtNombre.Focus();
+                return;
+                }
+            if(string.IsNullOrWhiteSpace(txtApellido.Text) )
+               {
+                MessageBox.Show("Debe completar el campo Apellido.");
+                txtApellido.Focus();
+                return;
+                }
 
+            if (txtDni.TextLength != 8 || !int.TryParse(txtDni.Text, out _) || string.IsNullOrWhiteSpace(txtDni.Text) )
             {
-                MessageBox.Show("Debe completar Nombre, Apellido o DNI");
+                MessageBox.Show("Por favor ingrese un DNI válido de 8 dígitos numéricos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDni.Focus();
                 return;
             }
-            
+
             if (clbCarreras.CheckedItems.Count == 0 ) 
             {
                 MessageBox.Show("Debe seleccionar una carrera.");
                 return;
-            } 
+            }
+          
             List<int> idscarrerasSeleccionadas = new List<int>();
             foreach (var item in clbCarreras.CheckedItems)
             {
@@ -59,29 +71,32 @@ namespace TPCAI_intensivo
                     idscarrerasSeleccionadas.Add(carreraSeleccionada.Id);
                 }
             }
-
-            AlumnoDtoRequest alumnoDtoRequest = new AlumnoDtoRequest
-            {
-                nombre = txtNombre.Text,
-                apellido = txtApellido.Text,
-                dni = txtDni.Text,
-                carrerasIds = idscarrerasSeleccionadas
-            };
-            GestorCRUDAlumno gestorCRUDAlumno = new GestorCRUDAlumno();
             try
             {
+                AlumnoDtoRequest alumnoDtoRequest = new AlumnoDtoRequest
+                {
+                    nombre = txtNombre.Text,
+                    apellido = txtApellido.Text,
+                    dni = txtDni.Text,
+                    carrerasIds = idscarrerasSeleccionadas
+                };
+                GestorCRUDAlumno gestorCRUDAlumno = new GestorCRUDAlumno();
                 gestorCRUDAlumno.CrearAlumno(alumnoDtoRequest);
                 MessageBox.Show("Alumno creado exitosamente.");
                
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al crear el alumno: {ex.Message}");
+                MessageBox.Show(ex.Message);
             }
         }
 
-        private void cmbCarrera_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
+            OpcionAdministrador opcionAdministrador = new OpcionAdministrador(UsuarioDto);
+            opcionAdministrador.Show();
+            this.Hide();
 
         }
     }
