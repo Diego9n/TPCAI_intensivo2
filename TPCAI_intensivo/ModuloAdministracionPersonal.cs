@@ -30,7 +30,7 @@ namespace TPCAI_intensivo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VerPersonal verPersonal = new VerPersonal();
+            VerPersonal verPersonal = new VerPersonal(UsuarioDto);
             verPersonal.Show();
             this.Hide();
         }

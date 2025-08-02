@@ -26,10 +26,11 @@ namespace Negocio
                     profesorDto.Dni = profesor.Dni;
                     profesorDto.Antiguedad = profesor.Antiguedad;
                     profesorDto.Tipo = profesor.Tipo;
-                    break; 
+                    return profesorDto; 
+                   
                 }
             }
-            return profesorDto;
+            return null;
         }
         public List<ProfesorDto> ObtenerProfesores()
         {

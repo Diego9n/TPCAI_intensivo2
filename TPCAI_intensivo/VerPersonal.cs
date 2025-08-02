@@ -9,18 +9,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace TPCAI_intensivo
 {
     public partial class VerPersonal : Form
     {
-        public VerPersonal()
+        UsuarioDto UsuarioDto;
+        public VerPersonal(UsuarioDto usuarioDto)
         {
             InitializeComponent();
+            UsuarioDto = usuarioDto;
         }
 
         private void VerPersonal_Load(object sender, EventArgs e)
         {
+            comboBox5.Items.Add("Modificar Personal");
+            comboBox5.Items.Add("Eliminar Personal");
+            groupBox2.Enabled = false;  
+            groupBox1.Enabled = false;
+            groupBox4.Enabled = false;
 
         }
 
@@ -33,10 +41,10 @@ namespace TPCAI_intensivo
             idProfesor = int.Parse(textBox1.Text);
             GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
             PersonalDtoRequest profesorDtoRequest = new PersonalDtoRequest();
-            profesorDtoRequest.Nombre = textBox2.Text;
-            profesorDtoRequest.Apellido = textBox3.Text;
-            profesorDtoRequest.Dni = textBox4.Text;
-            profesorDtoRequest.Cuit = textBox5.Text;
+            profesorDtoRequest.Nombre = txtNombre.Text;
+            profesorDtoRequest.Apellido = txtDni.Text;
+            profesorDtoRequest.Dni = txtApellido.Text;
+            profesorDtoRequest.Cuit = txtCuit.Text;
             profesorDtoRequest.Tipo = textBox6.Text;
             profesorDtoRequest.Cursos = new List<int>(); // Asumiendo que no se modifican los cursos en este ejemplo    
 
@@ -48,21 +56,33 @@ namespace TPCAI_intensivo
         private void button1_Click_1(object sender, EventArgs e)
         {
             GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
+           
             if (int.TryParse(textBox1.Text, out int idprofesor))
             {
                 ProfesorDto profesor = gestorCRUDPersonal.BuscarProfesorID(idprofesor);
 
                 if (profesor != null)
                 {
-                    textBox2.Text = profesor.Nombre;
-                    textBox3.Text = profesor.Apellido;
-                    textBox4.Text = profesor.Dni;
-                    textBox5.Text = profesor.Cuit;
-                    textBox6.Text = profesor.Tipo;
+                    groupBox4.Enabled = true;
+                    if (comboBox5.Text == "Modificar Personal")
+                    {
+                        PrepararModificar();
+                    }
+                    else if (comboBox5.Text == "Eliminar Personal")
+                    {
+                        PrepararEliminar();
+                    }
+                    txtNombre.Text = profesor.Nombre;
+                    txtDni.Text = profesor.Apellido;
+                    txtApellido.Text = profesor.Dni;
+                    txtCuit.Text = profesor.Cuit;
+                    comboBox1.Text = profesor.Tipo;
+                    txtAntiguedad.Text = profesor.Antiguedad.ToString();
                 }
-                else
+                else if (profesor == null)
                 {
                     MessageBox.Show("No se encontró un profesor con ese ID.");
+                    limpiarDatos();
                 }
             }
             else
@@ -80,11 +100,88 @@ namespace TPCAI_intensivo
                 GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
                 gestorCRUDPersonal.EliminarPersonal(eliminarId);
                 MessageBox.Show("Alumno eliminado exitosamente.");
+                limpiarDatos();
             }
             else
             {
                 MessageBox.Show("Por favor, ingrese un ID válido para eliminar.");
             }
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string accionSeleccionada = comboBox5.SelectedItem.ToString();
+            if (accionSeleccionada == "Modificar Personal")
+            {
+              PrepararModificar();
+
+            }
+            else if (accionSeleccionada == "Eliminar Personal")
+            {
+               PrepararEliminar();  
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una acción válida.");
+            }
+        }
+    
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+        void limpiarDatos()
+        {
+            textBox1.Clear();
+            txtNombre.Clear();
+            txtApellido.Clear();
+            txtDni.Clear();
+            txtCuit.Clear();
+            comboBox1.SelectedIndex = -1;
+            txtAntiguedad.Clear();  
+            groupBox4.Enabled = false;  
+        }
+        void PrepararModificar() 
+        {
+            groupBox4.Text = "Datos a modificar";
+            groupBox1.Enabled = true;
+            groupBox2.Enabled = true;
+            txtAntiguedad.ReadOnly = false;
+            txtCuit.ReadOnly = false;
+            txtNombre.ReadOnly = false;
+            txtApellido.ReadOnly = false;
+            txtDni.ReadOnly = false;
+            comboBox1.Enabled = true;
+
+            button3.Hide();
+            button2.Show();
+
+        }
+        void PrepararEliminar()
+        {
+            groupBox4.Text = "Datos a eliminar";
+            groupBox1.Enabled = true;
+            groupBox2.Enabled = false;
+            txtAntiguedad.ReadOnly = true;
+            txtCuit.ReadOnly = true;
+            txtNombre.ReadOnly = true;
+            txtApellido.ReadOnly = true;
+            txtDni.ReadOnly = true;
+            comboBox1.Enabled = false;
+
+            button2.Hide();
+            button3.Show();
+
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OpcionAdministrador opcionAdministrador = new OpcionAdministrador(UsuarioDto);
+            opcionAdministrador.Show();
+            this.Hide();
+
         }
     }
 }
