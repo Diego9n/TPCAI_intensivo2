@@ -13,7 +13,7 @@ namespace TPCAI_intensivo
 {
     public partial class ModuloEgresados : Form
     {
-        private Validar gestorNegocio = new Validar();
+        public Validar gestorNegocio = new Validar();
         public ModuloEgresados()
         {
             InitializeComponent();
