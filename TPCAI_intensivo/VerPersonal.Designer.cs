@@ -351,7 +351,7 @@
             this.groupBox4.Controls.Add(this.txtCuit);
             this.groupBox4.Controls.Add(this.comboBox1);
             this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Location = new System.Drawing.Point(84, 109);
+            this.groupBox4.Location = new System.Drawing.Point(42, 119);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(771, 522);
             this.groupBox4.TabIndex = 52;
