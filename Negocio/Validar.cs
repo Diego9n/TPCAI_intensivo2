@@ -78,9 +78,6 @@ namespace Negocio
         public int validarcredenciales(string nombreusuario)
         {
             int aceptar_tipo = 0;
-
-
-
             return aceptar_tipo;
         }
         public List<MateriaDto> ObtenerMateriasPorCarrera(int carreraId)
