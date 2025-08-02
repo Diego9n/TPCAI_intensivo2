@@ -55,7 +55,6 @@
     <Compile Include="CarreraResponse.cs" />
     <Compile Include="CursoResponse.cs" />
     <Compile Include="DesbloquearUsuarioRequest.cs" />
-    <Compile Include="EliminarUsuarioRequest.cs" />
     <Compile Include="HorariosResponse.cs" />
     <Compile Include="LoginRequest.cs" />
     <Compile Include="LoginResponse.cs" />
