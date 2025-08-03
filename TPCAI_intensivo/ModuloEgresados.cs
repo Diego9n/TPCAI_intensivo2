@@ -54,11 +54,13 @@ namespace TPCAI_intensivo
                 }
 
                 dgvTodosLosEgresados.DataSource = listaDeEgresados;
+                label2.Text = $"Egresados de la carrera: {listaDeEgresados.Count}";
                 dgvTodosLosEgresados.Columns["Promedio"].Visible = false;
                 dgvTodosLosEgresados.Columns["TituloHonorifico"].Visible = false;
 
                 var egresadosConHonor = listaDeEgresados.Where(egresadoh => egresadoh.TituloHonorifico != "Ninguno").ToList();
                 dgvTitulosHonorificos.DataSource = egresadosConHonor;
+                label3.Text = $"Títulos honoríficos: {egresadosConHonor.Count}";
                 if (egresadosConHonor.Any())
                 {
                     dgvTitulosHonorificos.Columns["Promedio"].FillWeight = 50;
