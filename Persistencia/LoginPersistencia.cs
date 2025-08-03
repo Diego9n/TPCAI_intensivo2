@@ -34,16 +34,32 @@ namespace Persistencia
                 var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result);
                 loginResponse = JsonConvert.DeserializeObject<LoginResponse>(reader.ReadToEnd());
             }
+            else if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                string errorJson = response.Content.ReadAsStringAsync().Result;
+
+                dynamic error = JsonConvert.DeserializeObject<dynamic>(errorJson);
+                string code = error.code;
+                string message = error.message;
+
+                if (code == "USER_BLOCKED")
+                {
+                    throw new Exception("El usuario se encuentra bloqueado.");
+                }
+                else if (code == "INVALID_CREDENTIALS")
+                {
+                    throw new Exception("Las credenciales ingresadas no son válidas.");
+                }
+                else
+                {
+                    throw new Exception("Error de autenticación: " + message);
+                }
+            }
             else
             {
-                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
-                if (response.StatusCode.Equals(401))
-                {
-                    throw new Exception("Usuario bloqueado");
-                }
-
-                throw new Exception("Error al intentar iniciar sesión.");
+                throw new Exception("Error inesperado: " + response.ReasonPhrase);
             }
+        
         
 
             return loginResponse;

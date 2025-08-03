@@ -22,8 +22,21 @@ namespace TPCAI_intensivo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GestorLogin login = new GestorLogin();
-            login.DesbloquearUsuario(int.Parse(textBox1.Text)); 
+            if (string.IsNullOrWhiteSpace(textBox1.Text) || !int.TryParse(textBox1.Text,out int id)   )
+            {
+                MessageBox.Show("Debe ingresar un ID de usuario valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try { 
+                 GestorLogin login = new GestorLogin();
+                 login.DesbloquearUsuario(int.Parse(textBox1.Text));
+                 MessageBox.Show("Usuario desbloqueado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);  
+            }
+                 catch (Exception ex)
+                 {
+                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     return;
+                 }
         }
 
         private void button2_Click(object sender, EventArgs e)

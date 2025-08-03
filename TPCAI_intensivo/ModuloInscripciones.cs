@@ -141,7 +141,8 @@ namespace TPCAI_intensivo
             foreach (var curso in cursos)
             {
                 if (curso.id == idCursoSeleccionado)
-                {
+                { 
+                   
                     cursoSeleccionado = curso;
                     break;
                 }
