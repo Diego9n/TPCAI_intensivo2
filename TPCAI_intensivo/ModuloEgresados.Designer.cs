@@ -36,14 +36,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgvTodosLosEgresados = new System.Windows.Forms.DataGridView();
             this.dgvTitulosHonorificos = new System.Windows.Forms.DataGridView();
+            this.btnVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodosLosEgresados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTitulosHonorificos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(815, 22);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAceptar.Location = new System.Drawing.Point(742, 22);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(205, 32);
             this.btnAceptar.TabIndex = 2;
@@ -54,8 +55,8 @@
             // comboBoxCarrera
             // 
             this.comboBoxCarrera.FormattingEnabled = true;
-            this.comboBoxCarrera.Location = new System.Drawing.Point(373, 25);
-            this.comboBoxCarrera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxCarrera.Location = new System.Drawing.Point(289, 22);
+            this.comboBoxCarrera.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCarrera.Name = "comboBoxCarrera";
             this.comboBoxCarrera.Size = new System.Drawing.Size(432, 24);
             this.comboBoxCarrera.TabIndex = 3;
@@ -63,7 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(307, 28);
+            this.label1.Location = new System.Drawing.Point(223, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 16);
@@ -94,7 +95,7 @@
             // 
             this.dgvTodosLosEgresados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTodosLosEgresados.Location = new System.Drawing.Point(36, 100);
-            this.dgvTodosLosEgresados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvTodosLosEgresados.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTodosLosEgresados.Name = "dgvTodosLosEgresados";
             this.dgvTodosLosEgresados.ReadOnly = true;
             this.dgvTodosLosEgresados.RowHeadersWidth = 51;
@@ -105,18 +106,29 @@
             // 
             this.dgvTitulosHonorificos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTitulosHonorificos.Location = new System.Drawing.Point(513, 100);
-            this.dgvTitulosHonorificos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvTitulosHonorificos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTitulosHonorificos.Name = "dgvTitulosHonorificos";
             this.dgvTitulosHonorificos.ReadOnly = true;
             this.dgvTitulosHonorificos.RowHeadersWidth = 51;
             this.dgvTitulosHonorificos.Size = new System.Drawing.Size(777, 390);
             this.dgvTitulosHonorificos.TabIndex = 7;
             // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(954, 22);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(336, 32);
+            this.btnVolver.TabIndex = 10;
+            this.btnVolver.Text = "Volver al Menu Administrador";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // ModuloEgresados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1328, 512);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvTitulosHonorificos);
@@ -124,7 +136,7 @@
             this.Controls.Add(this.dgvTodosLosEgresados);
             this.Controls.Add(this.comboBoxCarrera);
             this.Controls.Add(this.btnAceptar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ModuloEgresados";
             this.Text = "ModuloEgresados";
             this.Load += new System.EventHandler(this.ModuloEgresados_Load);
@@ -144,5 +156,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgvTodosLosEgresados;
         private System.Windows.Forms.DataGridView dgvTitulosHonorificos;
+        private System.Windows.Forms.Button btnVolver;
     }
 }

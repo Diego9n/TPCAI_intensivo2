@@ -8,39 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Negocio.GestorEgresados;
 
 namespace TPCAI_intensivo
 {
     public partial class ModuloEgresados : Form
     {
-        public Validar gestorNegocio = new Validar();
+        public Form _menuAnterior;
+        public GestorEgresados _gestorEgresados = new GestorEgresados();
+
+        public ModuloEgresados(Form menuAnterior)
+        {
+            InitializeComponent(); _menuAnterior = menuAnterior;
+        }
         public ModuloEgresados()
         {
             InitializeComponent();
         }
-        public void ConfigurarDataGridView()
-        {
-            dgvTodosLosEgresados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvTitulosHonorificos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
         public void ModuloEgresados_Load(object sender, EventArgs e)
         {
             CargarCarrerasEnComboBox();
-            ConfigurarDataGridView();
-        }
-        public void CargarCarrerasEnComboBox()
-        {
-            try
-            {
-                comboBoxCarrera.DataSource = gestorNegocio.ObtenerCarreras();
-                comboBoxCarrera.DisplayMember = "Nombre";
-                comboBoxCarrera.ValueMember = "Id";
-                comboBoxCarrera.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar la lista de carreras: " + ex.Message, "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ConfigurarDataGridViews();
         }
         public void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -55,50 +43,28 @@ namespace TPCAI_intensivo
                 this.Cursor = Cursors.WaitCursor;
                 dgvTodosLosEgresados.DataSource = null;
                 dgvTitulosHonorificos.DataSource = null;
-
                 int idCarreraSeleccionada = (int)comboBoxCarrera.SelectedValue;
-
-                List<MateriaDto> materiasRequeridas = gestorNegocio.ObtenerMateriasPorCarrera(idCarreraSeleccionada);
-                List<AlumnoDto> todosLosAlumnos = gestorNegocio.ObtenerAlumnos();
-
-                if (materiasRequeridas == null || !materiasRequeridas.Any())
-                {
-                    MessageBox.Show("No se pudo obtener el plan de estudios o la carrera no tiene materias cargadas.", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                var listaDeEgresados = new List<EgresadoReporte>();
-
-                foreach (var alumno in todosLosAlumnos)
-                {
-                    if (alumno.CarrerasIds != null && alumno.CarrerasIds.Contains(idCarreraSeleccionada))
-                    {
-                        List<MateriaAlumnoDto> materiasDelAlumno = gestorNegocio.ObtenerMateriasDeAlumno(alumno.Id);
-                        if (EsEgresado(materiasRequeridas, materiasDelAlumno))
-                        {
-                            double promedio = CalcularPromedio(materiasDelAlumno);
-                            string titulo = ObtenerTituloHonorifico(promedio);
-                            listaDeEgresados.Add(new EgresadoReporte
-                            {
-                                Nombre = alumno.Nombre,
-                                Apellido = alumno.Apellido,
-                                DNI = alumno.Dni,
-                                Promedio = Math.Round(promedio, 2),
-                                TituloHonorifico = titulo
-                            });
-                        }
-                    }
-                }
+                List<EgresadoReporte> listaDeEgresados = _gestorEgresados.GenerarReporteEgresados(idCarreraSeleccionada);
 
                 if (!listaDeEgresados.Any())
                 {
                     MessageBox.Show("No se encontraron egresados para la carrera seleccionada (ningún alumno ha aprobado todas las materias).", "Sin Resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Cursor = Cursors.Default;
                     return;
                 }
+
                 dgvTodosLosEgresados.DataSource = listaDeEgresados;
                 dgvTodosLosEgresados.Columns["Promedio"].Visible = false;
                 dgvTodosLosEgresados.Columns["TituloHonorifico"].Visible = false;
-                var egresadosConHonor = listaDeEgresados.Where(eh => eh.TituloHonorifico != "Ninguno").ToList();
+
+                var egresadosConHonor = listaDeEgresados.Where(egresadoh => egresadoh.TituloHonorifico != "Ninguno").ToList();
                 dgvTitulosHonorificos.DataSource = egresadosConHonor;
+                if (egresadosConHonor.Any())
+                {
+                    dgvTitulosHonorificos.Columns["Promedio"].FillWeight = 50;
+                    dgvTitulosHonorificos.Columns["TituloHonorifico"].FillWeight = 150;
+                    dgvTitulosHonorificos.Columns["DNI"].FillWeight = 80;
+                }
             }
             catch (Exception ex)
             {
@@ -109,50 +75,35 @@ namespace TPCAI_intensivo
                 this.Cursor = Cursors.Default;
             }
         }
-
-        public bool EsEgresado(List<MateriaDto> materiasRequeridas, List<MateriaAlumnoDto> materiasCursadas)
+        public void CargarCarrerasEnComboBox()
         {
-            if (materiasCursadas == null) return false;
+            try
+            {
+                comboBoxCarrera.DataSource = _gestorEgresados.ObtenerCarreras();
+                comboBoxCarrera.DisplayMember = "Nombre";
+                comboBoxCarrera.ValueMember = "Id";
+                comboBoxCarrera.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la lista de carreras: " + ex.Message, "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void ConfigurarDataGridViews()
+        {
+            dgvTodosLosEgresados.ReadOnly = true;
+            dgvTodosLosEgresados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTodosLosEgresados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            var idsMateriasRequeridas = materiasRequeridas.Select(m => m.Id).ToHashSet();
-
-            var idsMateriasAprobadas = materiasCursadas
-                .Where(m => m.Condicion != null && m.Condicion.Trim().Equals("APROBADO", StringComparison.OrdinalIgnoreCase))
-                .Select(m => m.Id)
-                .ToHashSet();
-
-            return idsMateriasRequeridas.IsSubsetOf(idsMateriasAprobadas);
+            dgvTitulosHonorificos.ReadOnly = true;
+            dgvTitulosHonorificos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTitulosHonorificos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        // METODO PARA CALCULAR EL PROMEDIO
-        public double CalcularPromedio(List<MateriaAlumnoDto> materiasDelAlumno)
+        private void btnVolver_Click(object sender, EventArgs e)
         {
-            var materiasAprobadasConNota = materiasDelAlumno.Where(m => m.Condicion != null &&
-            m.Condicion.Trim().Equals("APROBADO", StringComparison.OrdinalIgnoreCase) && m.Nota.HasValue);
-
-            if (!materiasAprobadasConNota.Any())
-            { return 0; }
-            return materiasAprobadasConNota.Average(m => m.Nota.Value);
-        }
-
-        // METODO PARA DETERMINAR EL TÍTULO HONORÍFICO
-        public string ObtenerTituloHonorifico(double promedio)
-        {
-            if (promedio == 10.00)
-            { return "Summa Cum Laude"; }
-            if (promedio >= 9.00)
-            { return "Magna Cum Laude"; }
-            if (promedio >= 8.00)
-            { return "Cum Laude"; }
-            return "Ninguno";
+            _menuAnterior.Show();
+            this.Close();
         }
     }
 }
-    public class EgresadoReporte
-    {
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string DNI { get; set; }
-        public double Promedio { get; set; }
-        public string TituloHonorifico { get; set; }
-    }
