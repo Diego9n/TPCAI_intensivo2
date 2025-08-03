@@ -60,9 +60,10 @@ namespace TPCAI_intensivo
             if (int.TryParse(textBox1.Text, out int idprofesor))
             {
                 ProfesorDto profesor = gestorCRUDPersonal.BuscarProfesorID(idprofesor);
-
+               
                 if (profesor != null)
                 {
+                    MessageBox.Show("Se encontró el profesor con ID: " + idprofesor, "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     groupBox4.Enabled = true;
                     if (comboBox5.Text == "Modificar Personal")
                     {
@@ -81,7 +82,7 @@ namespace TPCAI_intensivo
                 }
                 else if (profesor == null)
                 {
-                    MessageBox.Show("No se encontró un profesor con ese ID.");
+                    MessageBox.Show("No se encontró un profesor con ese ID: " + idprofesor,"Informacion", MessageBoxButtons.OK,MessageBoxIcon.Information);
                     limpiarDatos();
                 }
             }
@@ -97,15 +98,29 @@ namespace TPCAI_intensivo
             int eliminarId;
             if (int.TryParse(textBox1.Text, out eliminarId))
             {
-                GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
-                gestorCRUDPersonal.EliminarPersonal(eliminarId);
-                MessageBox.Show("Alumno eliminado exitosamente.");
-                limpiarDatos();
+                DialogResult resultado = MessageBox.Show("¿Estás seguro de que querés eliminar al personal con ID " + eliminarId + "?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.Yes)
+                {
+                    try {
+                        GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
+                        gestorCRUDPersonal.EliminarPersonal(eliminarId);
+                        MessageBox.Show("Personal eliminado exitosamente.");
+                        limpiarDatos();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (resultado == DialogResult.No)
+                {
+                    MessageBox.Show("Eliminación cancelada.");
+                }
+
             }
-            else
-            {
-                MessageBox.Show("Por favor, ingrese un ID válido para eliminar.");
-            }
+           
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,12 +128,14 @@ namespace TPCAI_intensivo
             string accionSeleccionada = comboBox5.SelectedItem.ToString();
             if (accionSeleccionada == "Modificar Personal")
             {
-              PrepararModificar();
+                limpiarDatos();
+                PrepararModificar();
 
             }
             else if (accionSeleccionada == "Eliminar Personal")
             {
-               PrepararEliminar();  
+                limpiarDatos();
+                PrepararEliminar();  
             }
             else
             {
@@ -133,18 +150,21 @@ namespace TPCAI_intensivo
         }
         void limpiarDatos()
         {
+        
+            comboBox5.Text = "Seleccione Modificar o eliminar";
             textBox1.Clear();
             txtNombre.Clear();
             txtApellido.Clear();
             txtDni.Clear();
             txtCuit.Clear();
-            comboBox1.SelectedIndex = -1;
+            comboBox1.Items.Clear();
             txtAntiguedad.Clear();  
             groupBox4.Enabled = false;  
         }
         void PrepararModificar() 
         {
             groupBox4.Text = "Datos a modificar";
+            comboBox1.Items.Clear();    
             groupBox1.Enabled = true;
             groupBox2.Enabled = true;
             txtAntiguedad.ReadOnly = false;
@@ -161,6 +181,7 @@ namespace TPCAI_intensivo
         void PrepararEliminar()
         {
             groupBox4.Text = "Datos a eliminar";
+            comboBox1.Items.Clear();    
             groupBox1.Enabled = true;
             groupBox2.Enabled = false;
             txtAntiguedad.ReadOnly = true;

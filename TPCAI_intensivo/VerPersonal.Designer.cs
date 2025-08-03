@@ -58,8 +58,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtAntiguedad = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -330,6 +330,7 @@
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(213, 21);
             this.comboBox5.TabIndex = 0;
+            this.comboBox5.Text = "Seleccione Modificar o Eliminar";
             this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // groupBox4
@@ -359,6 +360,13 @@
             this.groupBox4.Text = "groupbox4";
             this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
+            // txtAntiguedad
+            // 
+            this.txtAntiguedad.Location = new System.Drawing.Point(95, 269);
+            this.txtAntiguedad.Name = "txtAntiguedad";
+            this.txtAntiguedad.Size = new System.Drawing.Size(226, 20);
+            this.txtAntiguedad.TabIndex = 52;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -367,13 +375,6 @@
             this.label10.Size = new System.Drawing.Size(61, 13);
             this.label10.TabIndex = 51;
             this.label10.Text = "Antiguedad";
-            // 
-            // txtAntiguedad
-            // 
-            this.txtAntiguedad.Location = new System.Drawing.Point(95, 269);
-            this.txtAntiguedad.Name = "txtAntiguedad";
-            this.txtAntiguedad.Size = new System.Drawing.Size(226, 20);
-            this.txtAntiguedad.TabIndex = 52;
             // 
             // button5
             // 

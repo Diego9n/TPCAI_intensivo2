@@ -90,18 +90,17 @@ namespace Persistencia
             public void EliminarPersonal(int ideliminar)
             {
                 HttpResponseMessage response = WebHelper.Delete($"tpIntensivo/docentes/{ideliminar}");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Usuario eliminado correctamente.");
-                }
-                else
-                {
-                    MessageBox.Show($"Error al eliminar el usuario. Código: {response.StatusCode}");
-                }
-
-
+            if (!response.IsSuccessStatusCode)
+            {
+                string errorContent = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                Console.WriteLine("Detalle del error del servidor:");
+                Console.WriteLine(errorContent);
+                throw new Exception("Error al intentar eliminar el personal.");
             }
+
+
+        }
     }
 
 }
