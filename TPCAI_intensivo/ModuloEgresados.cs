@@ -102,7 +102,7 @@ namespace TPCAI_intensivo
             dgvTitulosHonorificos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void btnVolver_Click(object sender, EventArgs e)
+        public void btnVolver_Click(object sender, EventArgs e)
         {
             _menuAnterior.Show();
             this.Close();
