@@ -97,7 +97,7 @@ namespace Negocio
 
                     sueldoPersonal.preciohora = precioHora;
                     sueldoPersonal.CoeficienteSueldo = coefCargo;
-                    sueldoPersonal.Sueldo = horasSemanales * precioHora * coefCargo * coefAntiguedad;
+                    sueldoPersonal.Sueldo = Math.Round( horasSemanales * precioHora * coefCargo * coefAntiguedad ,2);
 
                 }else if (sueldoPersonal.Tipo == "AYUDANTE")
                 {
@@ -108,7 +108,7 @@ namespace Negocio
 
                     sueldoPersonal.preciohora = precioHora;
                     sueldoPersonal.CoeficienteSueldo = coefCargo;
-                    sueldoPersonal.Sueldo = horasSemanales * precioHora * coefCargo * coefAntiguedad;
+                    sueldoPersonal.Sueldo = Math.Round(horasSemanales * precioHora * coefCargo * coefAntiguedad,2);
 
 
 

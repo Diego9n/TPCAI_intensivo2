@@ -57,9 +57,13 @@ namespace TPCAI_intensivo
         {
             GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
            
-            if (int.TryParse(textBox1.Text, out int idprofesor))
+            if (!int.TryParse(textBox1.Text, out int idprofesor))
             {
-                ProfesorDto profesor = gestorCRUDPersonal.BuscarProfesorID(idprofesor);
+                MessageBox.Show("Ingrese un número válido para el ID del profesor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try { 
+               ProfesorDto profesor = gestorCRUDPersonal.BuscarProfesorID(idprofesor);
                
                 if (profesor != null)
                 {
@@ -82,17 +86,16 @@ namespace TPCAI_intensivo
                 }
                 else if (profesor == null)
                 {
-                    MessageBox.Show("No se encontró un profesor con ese ID: " + idprofesor,"Informacion", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("No se encontró un profesor con ese ID: " + idprofesor,"Informacion", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                     limpiarDatos();
                 }
             }
-            else
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                MessageBox.Show("Por favor, ingrese un número válido.");
             }
         }
-
         private void button3_Click_1(object sender, EventArgs e)
         {
             int eliminarId;
@@ -150,8 +153,6 @@ namespace TPCAI_intensivo
         }
         void limpiarDatos()
         {
-        
-            comboBox5.Text = "Seleccione Modificar o eliminar";
             textBox1.Clear();
             txtNombre.Clear();
             txtApellido.Clear();

@@ -98,6 +98,7 @@ namespace TPCAI_intensivo
                 MessageBox.Show("Debe ingresar un ID de alumno.");
                 return;
             }
+            try { 
             GestorCarreras gestorCarreras = new GestorCarreras();
             List<CarreraDto> carreras = gestorCarreras.ObtenerCarreras();
             GestorCRUDAlumno gestorCRUDAlumno = new GestorCRUDAlumno();
@@ -110,7 +111,8 @@ namespace TPCAI_intensivo
 
                             if (alumno != null)
                             {
-                                  foreach (var carrera in carreras)
+                                MessageBox.Show("Se encontro el Alumno ID: " + idalumno ,"Informacion" , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                foreach (var carrera in carreras)
                                   {
                                     clbCarreras.Items.Add(carrera, alumno.CarrerasIds.Contains(carrera.Id));
                                   }
@@ -121,8 +123,14 @@ namespace TPCAI_intensivo
                             }
                             else
                             {
-                                MessageBox.Show("No se encontró un alumno con ese ID.");
-                            }              
+                                MessageBox.Show("No se encontró un alumno con el ID: " + idalumno  ,"Informacion" , MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
+                                limpiarDatos();
+                    }              
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -146,10 +154,10 @@ namespace TPCAI_intensivo
                 limpiarDatos();
                 groupBox1.Enabled = true;
 
-                textBox1.Enabled = false;
-                txtNombre.Enabled = true;
-                txtApellido.Enabled = true;
-                txtDni.Enabled = false;
+                textBox1.ReadOnly = true;
+                txtNombre.ReadOnly = false;
+                txtApellido.ReadOnly = false;
+                txtDni.ReadOnly = true;
                 clbCarreras.Enabled = true;
                 txtEliminarAlumno.Hide();
                 button2.Show();
@@ -159,10 +167,10 @@ namespace TPCAI_intensivo
             {
                 limpiarDatos();
                 groupBox1.Enabled = true;
-                textBox1.Enabled = false;
-                txtNombre.Enabled = false;
-                txtApellido.Enabled = false;
-                txtDni.Enabled = false;
+                textBox1.ReadOnly = true;
+                txtNombre.ReadOnly = true;
+                txtApellido.ReadOnly = true;
+                txtDni.ReadOnly = true;
                 clbCarreras.Enabled = false;
                 button2.Hide();
                 txtEliminarAlumno.Show();

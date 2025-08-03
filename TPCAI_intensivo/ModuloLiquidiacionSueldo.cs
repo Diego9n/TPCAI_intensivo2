@@ -25,6 +25,7 @@ namespace TPCAI_intensivo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try { 
             label1.Text = "Cargando datos, por favor espere...";
             this.Cursor = Cursors.WaitCursor;
             Application.DoEvents(); 
@@ -43,7 +44,7 @@ namespace TPCAI_intensivo
                               "DNI: " + sueldo.Dni + "\n" +
                               "CUIT: " + sueldo.Cuit + "\n" +
                               "Antigüedad: " + sueldo.Antiguedad + " años " + "\n" +
-                              "Tipo: " + sueldo.Tipo + "\n" +
+                              "Tipo de cargo : " + sueldo.Tipo + "\n" +
                               "sueldo : $ " + sueldo.Sueldo + "\n";
             } else if (sueldo.Sueldo == 0)
             {
@@ -52,7 +53,14 @@ namespace TPCAI_intensivo
 
             }
             this.Cursor = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al calcular el sueldo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Cursor = Cursors.Default;
+            }
         }
+
 
 
 

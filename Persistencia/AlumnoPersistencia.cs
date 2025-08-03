@@ -86,7 +86,7 @@ namespace Persistencia
                 Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
                 Console.WriteLine("Detalle del error del servidor:");
                 Console.WriteLine(errorContent);
-                throw new Exception("Error al intentar eliminar el alumno.");
+                throw new Exception("Error al intentar Modificar el alumno.");
             }
 
 

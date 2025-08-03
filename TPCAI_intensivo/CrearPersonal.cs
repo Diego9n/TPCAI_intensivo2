@@ -189,6 +189,8 @@ namespace TPCAI_intensivo
 
                     textBox1.AppendText(info);
                 }
+                textBox1.SelectionStart = 0;
+                textBox1.ScrollToCaret();
 
             }
            
