@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +14,8 @@ namespace TPCAI_intensivo
 {
     public partial class ModuloInscripciones : Form
     {
-        GestorInscripciones gestorInscripciones = new GestorInscripciones();
+        private List<MateriaDto> materias;
+      GestorInscripciones gestorInscripciones = new GestorInscripciones();
         UsuarioDto usuarioalumno = new UsuarioDto();
         List<int> idsMateriasSeleccionadas = new List<int>();
         List<int> idsCursosSeleccionados = new List<int>();
@@ -38,8 +40,7 @@ namespace TPCAI_intensivo
             comboBox1.ValueMember = "Id";
             comboBox1.DataSource = carreras;
 
-            label1.Text = "Carreras";
-            label3.Text = "N RANKING : " + gestorInscripciones.ObtenerRanking((int)usuarioalumno.Id).ToString();
+            
 
         }
 
@@ -63,25 +64,30 @@ namespace TPCAI_intensivo
 
         }
 
-       
 
-        
-       
+
+
+
 
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem != null)
             {
+                var carreraSeleccionada = (CarreraDto)comboBox1.SelectedItem;
 
-                textBox1.Clear();
-                int idCarrera = (int)comboBox1.SelectedValue;
-
-
-                List<MateriaDto> materias = gestorInscripciones.ObtenerMateriasHabilitadas(idCarrera, (int)usuarioalumno.Id);
-
+                materias = gestorInscripciones.ObtenerMaterias(carreraSeleccionada.Id);
+              
                 comboBox2.DataSource = materias;
                 comboBox2.DisplayMember = "Nombre";
                 comboBox2.ValueMember = "Id";
+
+                double ranking = gestorInscripciones.ObtenerRanking(
+                    (int)usuarioalumno.Id, carreraSeleccionada);
+                label3.Text = "N RANKING : " + ranking.ToString("0.00");
+            }
+            else
+            {
+                label3.Text = "Seleccioná una carrera.";
             }
 
         }
@@ -164,6 +170,18 @@ namespace TPCAI_intensivo
             else
 
                 MessageBox.Show("Inscripción realizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+     
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
     }
