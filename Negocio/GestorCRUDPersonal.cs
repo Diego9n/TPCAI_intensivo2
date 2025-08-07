@@ -86,5 +86,46 @@ namespace Negocio
         {
             ProfesorPersistencia.EliminarPersonal(IdPersonal);
         }
+        public List<int> CursosPersonal(int profesorid)
+        {
+            List<int> cursosContados = new List<int>();
+            GestorCarreras gestorCarreras = new GestorCarreras();
+            GestorMaterias gestorMaterias = new GestorMaterias();
+            SueldoPersonal sueldoPersonal = new SueldoPersonal();
+            GestorProfesores gestorProfesores = new GestorProfesores();
+            List<ProfesorDto> listaProfesores = gestorProfesores.ObtenerProfesores();
+            List<CarreraDto> ListaCarreras = gestorCarreras.ObtenerCarreras();
+
+            foreach (var carreras in ListaCarreras)
+            {
+                List<MateriaDto> listaMaterias = gestorMaterias.ObtenerMaterias(carreras.Id);
+
+                foreach (var materias in listaMaterias)
+                {
+                    List<CursoResponseDto> listaCursos = gestorMaterias.ObtenerCursos(materias.Id);
+                    foreach (var cursos in listaCursos)
+                    {
+                        if (cursosContados.Contains(cursos.id))
+                            continue;
+                        foreach (var listaprofesores in cursos.idDocentes)
+                        {
+                            if (profesorid == listaprofesores)
+                            {
+
+                                cursosContados.Add(cursos.id);
+                                break;
+                            }
+
+
+                        }
+
+
+                    }
+
+
+                }
+            }
+            return cursosContados;
+        }
     }
 }

@@ -61,6 +61,7 @@
             this.txtAntiguedad = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -69,9 +70,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(344, 647);
+            this.button2.Location = new System.Drawing.Point(286, 647);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 23);
+            this.button2.Size = new System.Drawing.Size(144, 23);
             this.button2.TabIndex = 19;
             this.button2.Text = "Aceptar Modificaciones";
             this.button2.UseVisualStyleBackColor = true;
@@ -169,7 +170,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(315, 647);
+            this.button3.Location = new System.Drawing.Point(273, 647);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(157, 23);
             this.button3.TabIndex = 24;
@@ -188,18 +189,18 @@
             // textBox6
             // 
             this.textBox6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox6.Location = new System.Drawing.Point(407, 251);
+            this.textBox6.Location = new System.Drawing.Point(407, 184);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox6.Size = new System.Drawing.Size(334, 251);
+            this.textBox6.Size = new System.Drawing.Size(334, 121);
             this.textBox6.TabIndex = 46;
             // 
             // lblCursos
             // 
             this.lblCursos.AutoSize = true;
-            this.lblCursos.Location = new System.Drawing.Point(404, 220);
+            this.lblCursos.Location = new System.Drawing.Point(404, 152);
             this.lblCursos.Name = "lblCursos";
             this.lblCursos.Size = new System.Drawing.Size(159, 13);
             this.lblCursos.TabIndex = 45;
@@ -254,12 +255,13 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(183, 174);
+            this.button4.Location = new System.Drawing.Point(244, 174);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(173, 23);
+            this.button4.Size = new System.Drawing.Size(112, 23);
             this.button4.TabIndex = 44;
             this.button4.Text = "Agregar curso";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
@@ -304,6 +306,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(198, 21);
             this.comboBox2.TabIndex = 44;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox3
             // 
@@ -312,6 +315,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(198, 21);
             this.comboBox3.TabIndex = 45;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -352,9 +356,9 @@
             this.groupBox4.Controls.Add(this.txtCuit);
             this.groupBox4.Controls.Add(this.comboBox1);
             this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Location = new System.Drawing.Point(42, 119);
+            this.groupBox4.Location = new System.Drawing.Point(42, 126);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(771, 522);
+            this.groupBox4.Size = new System.Drawing.Size(771, 515);
             this.groupBox4.TabIndex = 52;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupbox4";
@@ -386,11 +390,21 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(99, 110);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.TabIndex = 53;
+            this.label11.Text = "label11";
+            // 
             // VerPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(887, 729);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -410,6 +424,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -448,5 +463,6 @@
         private System.Windows.Forms.TextBox txtAntiguedad;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label11;
     }
 }

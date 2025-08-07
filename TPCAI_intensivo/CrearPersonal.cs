@@ -233,7 +233,10 @@ namespace TPCAI_intensivo
 
         }
 
-      
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
         
       

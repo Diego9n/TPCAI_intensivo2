@@ -87,6 +87,7 @@ namespace Negocio
 
                 }
                 }
+                horasSemanales = horasSemanales * 4;
 
                 if (sueldoPersonal.Tipo == "PROFESOR")
                 {

@@ -16,6 +16,8 @@ namespace TPCAI_intensivo
     public partial class VerPersonal : Form
     {
         UsuarioDto UsuarioDto;
+        List<int> cursosSeleccionadosIds = new List<int>();
+        List<int> cursosAmodificar = new List<int>();
         public VerPersonal(UsuarioDto usuarioDto)
         {
             InitializeComponent();
@@ -29,73 +31,112 @@ namespace TPCAI_intensivo
             groupBox2.Enabled = false;  
             groupBox1.Enabled = false;
             groupBox4.Enabled = false;
-
+            label11.Hide();
         }
 
 
   
 
         private void button2_Click_1(object sender, EventArgs e)
-        {
+        { 
+                    
+            try { 
             int idProfesor;
             idProfesor = int.Parse(textBox1.Text);
             GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
             PersonalDtoRequest profesorDtoRequest = new PersonalDtoRequest();
-            profesorDtoRequest.Nombre = txtNombre.Text;
+                profesorDtoRequest.Cursos = new List<int>();
+                profesorDtoRequest.Nombre = txtNombre.Text;
             profesorDtoRequest.Apellido = txtDni.Text;
             profesorDtoRequest.Dni = txtApellido.Text;
             profesorDtoRequest.Cuit = txtCuit.Text;
-            profesorDtoRequest.Tipo = textBox6.Text;
-            profesorDtoRequest.Cursos = new List<int>(); // Asumiendo que no se modifican los cursos en este ejemplo    
-
-
-            gestorCRUDPersonal.ModificarPersonal(profesorDtoRequest, idProfesor);
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
-           
-            if (!int.TryParse(textBox1.Text, out int idprofesor))
-            {
-                MessageBox.Show("Ingrese un número válido para el ID del profesor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try { 
-               ProfesorDto profesor = gestorCRUDPersonal.BuscarProfesorID(idprofesor);
-               
-                if (profesor != null)
+            profesorDtoRequest.Tipo = comboBox1.Text;
+                foreach (var curso in cursosAmodificar)
                 {
-                    MessageBox.Show("Se encontró el profesor con ID: " + idprofesor, "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    groupBox4.Enabled = true;
-                    if (comboBox5.Text == "Modificar Personal")
-                    {
-                        PrepararModificar();
-                    }
-                    else if (comboBox5.Text == "Eliminar Personal")
-                    {
-                        PrepararEliminar();
-                    }
-                    txtNombre.Text = profesor.Nombre;
-                    txtDni.Text = profesor.Apellido;
-                    txtApellido.Text = profesor.Dni;
-                    txtCuit.Text = profesor.Cuit;
-                    comboBox1.Text = profesor.Tipo;
-                    txtAntiguedad.Text = profesor.Antiguedad.ToString();
+                    profesorDtoRequest.Cursos.Add(curso);
                 }
-                else if (profesor == null)
-                {
-                    MessageBox.Show("No se encontró un profesor con ese ID: " + idprofesor,"Informacion", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                    limpiarDatos();
-                }
+
+
+                gestorCRUDPersonal.ModificarPersonal(profesorDtoRequest, idProfesor);
+                limpiarDatos();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                limpiarDatos();
+                return;
+           
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            label11.Text = "Espere a que se carguen los datos ...... (esto se debe a que se tiene que buscar los cursos en todos los cursos de todas las carreras)";
+            label11.Show();
+            textBox7.Clear();
+            this.Cursor = Cursors.WaitCursor;
+            Application.DoEvents();
+
+            if (!int.TryParse(textBox1.Text, out int idProfesor))
+            {
+                MessageBox.Show("Ingrese un número válido para el ID del profesor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ResetEstado();
+                return;
+            }
+
+            try
+            {
+                GestorCRUDPersonal gestor = new GestorCRUDPersonal();
+                ProfesorDto profesor = gestor.BuscarProfesorID(idProfesor);
+
+                if (profesor == null)
+                {
+                    MessageBox.Show("No se encontró un profesor con ese ID: " + idProfesor, "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    limpiarDatos();
+                    ResetEstado();
+                    return;
+                }
+
+                MessageBox.Show("Se encontró el profesor con ID: " + idProfesor, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtNombre.Text = profesor.Nombre;
+                txtDni.Text = profesor.Apellido;
+                txtApellido.Text = profesor.Dni;
+                txtCuit.Text = profesor.Cuit;
+                comboBox1.Text = profesor.Tipo;
+                txtAntiguedad.Text = profesor.Antiguedad.ToString();
+
+
+               
+                List<int> cursosPersonal = gestor.CursosPersonal(idProfesor);
+                cursosAmodificar.Clear();
+                foreach (var curso in cursosPersonal)
+                {
+                    textBox7.AppendText("ID Curso: " + curso + Environment.NewLine);
+                    cursosAmodificar.Add(curso);
+                }
+
+               
+                groupBox4.Enabled = true;
+                if (comboBox5.Text == "Modificar Personal")
+                {
+                    PrepararModificar();
+                }
+                else if (comboBox5.Text == "Eliminar Personal")
+                {
+                    PrepararEliminar();
+                }
+
+                ResetEstado(); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ResetEstado();
+            }
+        }
+
         private void button3_Click_1(object sender, EventArgs e)
         {
             int eliminarId;
@@ -154,8 +195,13 @@ namespace TPCAI_intensivo
         void limpiarDatos()
         {
             textBox1.Clear();
+            comboBox2.SelectedIndex = -1;
+            comboBox3.Items.Clear();
+            comboBox4.Items.Clear();
             txtNombre.Clear();
             txtApellido.Clear();
+            textBox6.Clear();
+            textBox7.Clear();
             txtDni.Clear();
             txtCuit.Clear();
             comboBox1.Items.Clear();
@@ -164,6 +210,12 @@ namespace TPCAI_intensivo
         }
         void PrepararModificar() 
         {
+            GestorCarreras gestorCarreras = new GestorCarreras();
+            List<CarreraDto> carreras = gestorCarreras.ObtenerCarreras();
+            foreach (var carrera in carreras)
+            {
+                comboBox2.Items.Add(carrera);
+            }
             groupBox4.Text = "Datos a modificar";
             comboBox1.Items.Clear();    
             groupBox1.Enabled = true;
@@ -204,6 +256,107 @@ namespace TPCAI_intensivo
             opcionAdministrador.Show();
             this.Hide();
 
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GestorMaterias gestorMaterias = new GestorMaterias();
+            comboBox3.Items.Clear();
+            comboBox3.Text = "Seleccione una materia";
+            comboBox4.Items.Clear();
+            comboBox4.Text = "Seleccione un curso";
+
+            if (comboBox2.SelectedItem != null)
+            {
+                CarreraDto carreraSeleccionada = (CarreraDto)comboBox2.SelectedItem;
+                int idCarrera = carreraSeleccionada.Id;
+
+                var materias = gestorMaterias.ObtenerMaterias(idCarrera);
+
+                foreach (var materia in materias)
+                {
+
+                    comboBox3.Items.Add(materia);
+                }
+            }
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GestorMaterias gestorMaterias = new GestorMaterias();
+            comboBox4.Items.Clear();
+            comboBox4.Text = "Seleccione un curso";
+
+            if (comboBox3.SelectedItem != null)
+            {
+                MateriaDto materiaSeleccionada = (MateriaDto)comboBox3.SelectedItem;
+                int idMateria = materiaSeleccionada.Id;
+                var cursos = gestorMaterias.ObtenerCursos(idMateria);
+                foreach (var curso in cursos)
+                {
+                    comboBox4.Items.Add(curso);
+                    string dias = string.Join(", ", curso.dias);
+
+                    string horarios = "";
+                    foreach (var h in curso.horarios)
+                    {
+                        horarios += h.horaInicio + " - " + h.horaFin + "; ";
+                    }
+
+                    string info = $"ID: {curso.id}\r\n" +
+                                  $"Días: {dias}\r\n" +
+                                  $"Horarios: {horarios.Trim()}\r\n" +
+                                  "------------------------------\r\n";
+
+                    textBox6.AppendText(info);
+                }
+                textBox1.SelectionStart = 0;
+                textBox1.ScrollToCaret();
+
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (comboBox4.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un curso.");
+                return;
+            }
+
+            CursoResponseDto cursoSeleccionado = (CursoResponseDto)comboBox4.SelectedItem;
+
+            // Verificamos que no esté ya en la lista
+            bool yaAgregado = cursosSeleccionadosIds.Contains(cursoSeleccionado.id);
+
+            if (!yaAgregado)
+            {
+                cursosSeleccionadosIds.Add(cursoSeleccionado.id);
+
+                string dias = string.Join(", ", cursoSeleccionado.dias);
+
+                string horarios = "";
+                foreach (var h in cursoSeleccionado.horarios)
+                {
+                    horarios += $"{h.dia}: {h.horaInicio} - {h.horaFin}; ";
+                }
+
+                string info = $"ID Curso: {cursoSeleccionado.id}\r\n" ;
+
+                textBox7.AppendText(info);
+
+                MessageBox.Show("Curso agregado con éxito.");
+                cursosAmodificar.Add(cursoSeleccionado.id);
+            }
+            else
+            {
+                MessageBox.Show("El curso ya fue agregado.");
+            }
+        }
+        private void ResetEstado()
+        {
+            this.Cursor = Cursors.Default;
+            label11.Hide();
         }
     }
 }
