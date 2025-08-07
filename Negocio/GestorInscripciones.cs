@@ -38,7 +38,7 @@ namespace Negocio
                         Id = (int)c.Id,
                         Nombre = c.Nombre,
                         HorasSemanales = c.HorasSemanales
-                    }).ToList() // Convertir correlativas a MateriaDto  
+                    }).ToList() 
 
                 });
             }
@@ -49,9 +49,6 @@ namespace Negocio
         public List<CarreraDto> ObtenerCarreras()
         {
             var listaResponse = CarreraPersistencia.buscarDatosUsuario();
-
-            // Convertir CarreraResponse a CarreraDTO para manejar datos
-            // de forma más sencilla en la interfaz de usuario.
             List<CarreraDto> listaDTO = new List<CarreraDto>();
             foreach (var carrera in listaResponse)
             {
@@ -76,7 +73,7 @@ namespace Negocio
                     id = (int)Acondicion.id,
                     nombre = Acondicion.nombre,
                     condicion = Acondicion.condicion,
-                    nota = Acondicion.nota ?? 0 // Asignar 0 si nota es null
+                    nota = Acondicion.nota ?? 0 
 
                 });
             }
@@ -218,7 +215,7 @@ namespace Negocio
                 }
                 if (contadorRestantes > 8)
                 {
-                    D = 0; // Si hay más de 8 materias restantes, D es 0
+                    D = 0; 
                 }
                 if (contadorRestantes == 1)
                 {
@@ -255,30 +252,6 @@ namespace Negocio
 
             }
             C = contadordenota / contadorRestantes;
-            // Dictionary<int, int> puntosPorMateriasRestantes = new Dictionary<int, int>
-
-            //  {
-            //  {8, 5},
-            // {7, 10},
-            // {6, 15},
-            // {5, 20},
-            // {4, 30},
-            // {//3, 45},
-            //{2, 60},
-            //{1, 90}
-            // };
-
-            //if (puntosPorMateriasRestantes.TryGetValue((int)contadorRestantes2, out int puntosExtra))
-            //{
-            //  D = puntosExtra;
-            //}
-            //else
-            //{
-            // D = 0;
-            // }
-
-
-
             double ranking = (A * 100) + (B * 3) + (C * 3) + D;
             return ranking;
         }

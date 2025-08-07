@@ -32,7 +32,49 @@ namespace TPCAI_intensivo
             GestorLogin gestorLogin = new GestorLogin();
             Validaciones validaciones = new Validaciones();
             string usuario = txtUsuario.Text;
-            string contraseña = txtContraseña.Text; 
+            string contraseña = txtContraseña.Text;
+
+            
+          /* if (usuario.Length != 8)
+            {
+                MessageBox.Show("El nombre de usuario debe tener exactamente 8 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            bool usuarioTieneLetra = false;
+            bool usuarioTieneNumero = false;
+            foreach (char c in usuario)
+            {
+                if (!char.IsLetterOrDigit(c))
+                {
+                    MessageBox.Show("El nombre de usuario solo debe contener letras y números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (char.IsLetter(c)) usuarioTieneLetra = true;
+                if (char.IsDigit(c)) usuarioTieneNumero = true;
+            }
+            if (!usuarioTieneLetra || !usuarioTieneNumero)
+            {
+                MessageBox.Show("El nombre de usuario debe tener al menos una letra y un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (contraseña.Length < 8)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 8 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            bool contraseñaTieneLetra = false;
+            bool contraseñaTieneNumero = false;
+            foreach (char c in contraseña)
+            {
+                if (char.IsLetter(c)) contraseñaTieneLetra = true;
+                if (char.IsDigit(c)) contraseñaTieneNumero = true;
+            }
+            if (!contraseñaTieneLetra || !contraseñaTieneNumero)
+            {
+                MessageBox.Show("La contraseña debe contener al menos una letra y un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }*/
             try {
                
                 validaringresousuario = validaciones.ValidarIngresoUsuario(usuario); 

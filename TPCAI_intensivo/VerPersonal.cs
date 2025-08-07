@@ -76,8 +76,8 @@ namespace TPCAI_intensivo
             idProfesor = int.Parse(textBox1.Text);
             GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
             PersonalDtoRequest profesorDtoRequest = new PersonalDtoRequest();
-                profesorDtoRequest.Cursos = new List<int>();
-                profesorDtoRequest.Nombre = txtNombre.Text;
+            profesorDtoRequest.Cursos = new List<int>();
+            profesorDtoRequest.Nombre = txtNombre.Text;
             profesorDtoRequest.Apellido = txtApellido.Text;
             profesorDtoRequest.Dni = txtDni.Text;
             profesorDtoRequest.Cuit = txtCuit.Text;
@@ -94,7 +94,7 @@ namespace TPCAI_intensivo
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Se ha modificado correctamente pero da error 500 en el response { ex.Message }", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 limpiarDatos();
                 return;
            
@@ -219,10 +219,7 @@ namespace TPCAI_intensivo
         }
     
 
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
 
-        }
         void limpiarDatos()
         {
             textBox1.Clear();
@@ -259,7 +256,7 @@ namespace TPCAI_intensivo
             txtDni.ReadOnly = false;
             comboBox1.Enabled = true;
             groupBox5.Enabled = true;
-
+            textBox6.Enabled = true;    
             button3.Hide();
             button2.Show();
 
@@ -277,6 +274,7 @@ namespace TPCAI_intensivo
             txtDni.ReadOnly = true;
             comboBox1.Enabled = false;
             groupBox5.Enabled = false;  
+            textBox6.Enabled = false;
 
             button2.Hide();
             button3.Show();

@@ -191,12 +191,6 @@ namespace TPCAI_intensivo
             txtDni.Clear();
             clbCarreras.Items.Clear();
         }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             OpcionAdministrador opcionAdministrador = new OpcionAdministrador(UsuarioDto);

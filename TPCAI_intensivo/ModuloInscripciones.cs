@@ -30,11 +30,6 @@ namespace TPCAI_intensivo
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ModuloInscripciones_Load(object sender, EventArgs e)
         {
             List<CarreraDto> carreras = gestorInscripciones.ObtenerCarreras();
@@ -61,24 +56,6 @@ namespace TPCAI_intensivo
             moduloLogin.Show();
             this.Hide();
         }
-
-
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-
 
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -201,23 +178,6 @@ namespace TPCAI_intensivo
                 MessageBox.Show("Inscripción realizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -291,7 +251,7 @@ namespace TPCAI_intensivo
                 }
                 else if (cmbModalidad.Text == "Inscripcion a finales")
                 {
-
+                    try {
                     AlumnoCondicionDto materiaSeleccionada = (AlumnoCondicionDto)comboBox2.SelectedItem;
                     AceptarIsncripcion = gestorInscripciones.ValidarFinal(materiaSeleccionada, finalesinscriptos);
                     if (AceptarIsncripcion == true)
@@ -306,6 +266,13 @@ namespace TPCAI_intensivo
                         MessageBox.Show("Inscripcion a final Aceptada");
                         limpiarDatos();
                     }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
                 }
                 else if (DialogResult.No == resultado)
                 {

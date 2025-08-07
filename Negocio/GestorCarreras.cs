@@ -16,9 +16,6 @@ namespace Negocio
         public List<CarreraDto> ObtenerCarreras()
         {
             var listaResponse = CarreraPersistencia.buscarDatosUsuario();
-
-            // Convertir CarreraResponse a CarreraDTO para manejar datos
-            // de forma más sencilla en la interfaz de usuario.
             List<CarreraDto> listaDTO = new List<CarreraDto>();
             foreach (var carrera in listaResponse)
             {

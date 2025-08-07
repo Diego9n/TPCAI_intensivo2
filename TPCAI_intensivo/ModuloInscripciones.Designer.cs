@@ -71,7 +71,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(267, 21);
             this.comboBox2.TabIndex = 1;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+      
             // 
             // lblCarrera
             // 
@@ -81,7 +81,7 @@
             this.lblCarrera.Size = new System.Drawing.Size(41, 13);
             this.lblCarrera.TabIndex = 2;
             this.lblCarrera.Text = "Carrera";
-            this.lblCarrera.Click += new System.EventHandler(this.label1_Click);
+         
             // 
             // lblMateria
             // 
@@ -164,7 +164,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 12;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+  
             // 
             // textBox1
             // 

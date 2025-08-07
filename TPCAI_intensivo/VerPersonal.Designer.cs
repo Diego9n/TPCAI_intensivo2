@@ -174,7 +174,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(309, 647);
+            this.button3.Location = new System.Drawing.Point(286, 647);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(157, 23);
             this.button3.TabIndex = 24;
@@ -367,7 +367,7 @@
             this.groupBox4.TabIndex = 52;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupbox4";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+          
             // 
             // txtAntiguedad
             // 
