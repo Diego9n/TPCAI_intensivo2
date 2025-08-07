@@ -62,10 +62,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // button2
@@ -170,7 +174,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(273, 647);
+            this.button3.Location = new System.Drawing.Point(309, 647);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(157, 23);
             this.button3.TabIndex = 24;
@@ -251,7 +255,7 @@
             this.groupBox2.Size = new System.Drawing.Size(372, 205);
             this.groupBox2.TabIndex = 50;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Selecione el curso";
+            this.groupBox2.Text = "Agregar el curso";
             // 
             // button4
             // 
@@ -339,6 +343,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.txtAntiguedad);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.txtNombre);
@@ -382,7 +387,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(315, 685);
+            this.button5.Location = new System.Drawing.Point(286, 676);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(157, 23);
             this.button5.TabIndex = 53;
@@ -398,6 +403,34 @@
             this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 53;
             this.label11.Text = "label11";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(37, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 53;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(37, 58);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 54;
+            this.button6.Text = "Eliminar";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBox2);
+            this.groupBox5.Controls.Add(this.button6);
+            this.groupBox5.Location = new System.Drawing.Point(407, 311);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(334, 198);
+            this.groupBox5.TabIndex = 55;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Ingrese el curso a eliminar";
             // 
             // VerPersonal
             // 
@@ -423,6 +456,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,5 +499,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }

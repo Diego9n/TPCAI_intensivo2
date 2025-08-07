@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,6 +32,7 @@ namespace TPCAI_intensivo
             groupBox2.Enabled = false;  
             groupBox1.Enabled = false;
             groupBox4.Enabled = false;
+            groupBox5.Enabled = false;
             label11.Hide();
         }
 
@@ -38,8 +40,37 @@ namespace TPCAI_intensivo
   
 
         private void button2_Click_1(object sender, EventArgs e)
-        { 
-                    
+        {
+            if (textBox7.Text == string.Empty)
+            {
+                MessageBox.Show("Debe seleccionar al menos un curso.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtCuit.Text))
+            {
+                MessageBox.Show("Debe completar los campos obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string dni = txtDni.Text.Trim();
+
+            if (!long.TryParse(dni, out long dniNumerico))
+            {
+                MessageBox.Show("El DNI debe contener solo números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (dni.Length < 7 || dni.Length > 8)
+            {
+                MessageBox.Show("El DNI debe tener entre 7 y 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string antiguedadTexto = txtAntiguedad.Text.Trim();
+
+            if (!int.TryParse(antiguedadTexto, out int antiguedad) || antiguedad < 0)
+            {
+                MessageBox.Show("Ingrese una antigüedad válida (número entero mayor o igual a 0).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try { 
             int idProfesor;
             idProfesor = int.Parse(textBox1.Text);
@@ -47,8 +78,8 @@ namespace TPCAI_intensivo
             PersonalDtoRequest profesorDtoRequest = new PersonalDtoRequest();
                 profesorDtoRequest.Cursos = new List<int>();
                 profesorDtoRequest.Nombre = txtNombre.Text;
-            profesorDtoRequest.Apellido = txtDni.Text;
-            profesorDtoRequest.Dni = txtApellido.Text;
+            profesorDtoRequest.Apellido = txtApellido.Text;
+            profesorDtoRequest.Dni = txtDni.Text;
             profesorDtoRequest.Cuit = txtCuit.Text;
             profesorDtoRequest.Tipo = comboBox1.Text;
                 foreach (var curso in cursosAmodificar)
@@ -101,8 +132,8 @@ namespace TPCAI_intensivo
                 MessageBox.Show("Se encontró el profesor con ID: " + idProfesor, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 txtNombre.Text = profesor.Nombre;
-                txtDni.Text = profesor.Apellido;
-                txtApellido.Text = profesor.Dni;
+                txtApellido.Text = profesor.Apellido;
+                txtDni.Text = profesor.Dni;
                 txtCuit.Text = profesor.Cuit;
                 comboBox1.Text = profesor.Tipo;
                 txtAntiguedad.Text = profesor.Antiguedad.ToString();
@@ -207,6 +238,7 @@ namespace TPCAI_intensivo
             comboBox1.Items.Clear();
             txtAntiguedad.Clear();  
             groupBox4.Enabled = false;  
+            textBox2.Clear();
         }
         void PrepararModificar() 
         {
@@ -226,6 +258,7 @@ namespace TPCAI_intensivo
             txtApellido.ReadOnly = false;
             txtDni.ReadOnly = false;
             comboBox1.Enabled = true;
+            groupBox5.Enabled = true;
 
             button3.Hide();
             button2.Show();
@@ -243,6 +276,7 @@ namespace TPCAI_intensivo
             txtApellido.ReadOnly = true;
             txtDni.ReadOnly = true;
             comboBox1.Enabled = false;
+            groupBox5.Enabled = false;  
 
             button2.Hide();
             button3.Show();
@@ -357,6 +391,37 @@ namespace TPCAI_intensivo
         {
             this.Cursor = Cursors.Default;
             label11.Hide();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBox2.Text, out int idCursoAEliminar))
+            {
+                MessageBox.Show("Ingrese un ID de curso válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cursosAmodificar.Contains(idCursoAEliminar))
+            {
+                cursosAmodificar.Remove(idCursoAEliminar);
+                cursosSeleccionadosIds.Remove(idCursoAEliminar);
+                MessageBox.Show("Curso eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ActualizarCursosMostrados();
+                textBox2.Clear();
+
+            }
+            else
+            {
+                MessageBox.Show("Ese curso no está en la lista.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void ActualizarCursosMostrados()
+        {
+            textBox7.Clear();
+            foreach (var curso in cursosAmodificar)
+            {
+                textBox7.AppendText("ID Curso: " + curso + Environment.NewLine);
+            }
         }
     }
 }
