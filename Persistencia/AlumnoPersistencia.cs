@@ -134,6 +134,20 @@ namespace Persistencia
 
 
         }
+        public void InscribirAlumno(int idalumno, List<int> materiasIds)
+        {
+
+            string jsonData = JsonConvert.SerializeObject(materiasIds);
+            HttpResponseMessage response = WebHelper.Post($"tpIntensivo/alumno/{idalumno}/materias", jsonData);
+            if (!response.IsSuccessStatusCode)
+            {
+                string errorContent = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                Console.WriteLine("Detalle del error del servidor:");
+                Console.WriteLine(errorContent);
+                throw new Exception("Error al intentar inscribir al alumno en las materias.");
+            }
+        }
     }
 }
 

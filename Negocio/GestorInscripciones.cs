@@ -282,5 +282,93 @@ namespace Negocio
             double ranking = (A * 100) + (B * 3) + (C * 3) + D;
             return ranking;
         }
+        
+   public bool HorariosCursos(List<CursoResponseDto> Cursos, List<CursoResponseDto> cursosSeleccionados, int CursoAinscribrirse)
+        {
+            CursoResponseDto cursoNuevo = null;
+
+            foreach (var Curso in Cursos)
+            {
+                if (Curso.id == CursoAinscribrirse)
+                {
+                    cursoNuevo = Curso;
+                    break;
+                }
+            }
+
+            if (cursoNuevo == null)
+                return false;
+
+            foreach (var cursoSeleccionado in cursosSeleccionados)
+            {
+                foreach (var horarioNuevo in cursoNuevo.horarios)
+                {
+                    foreach (var horarioExistente in cursoSeleccionado.horarios)
+                    {
+
+                        if (horarioNuevo.dia == horarioExistente.dia)
+                        {
+                            string inicioNuevo = horarioNuevo.horaInicio;
+                            string finNuevo = horarioNuevo.horaFin;
+                            string inicioExistente = horarioExistente.horaInicio;
+                            string finExistente = horarioExistente.horaFin;
+                            bool haySolapamiento = inicioNuevo.CompareTo(finExistente) < 0 && inicioExistente.CompareTo(finNuevo) < 0;
+                            if (haySolapamiento)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public void InscribirAlumno(int idAlumno, List<int> idsCursos)
+        {
+            AlumnoPersistencia alumnoPersistencia = new AlumnoPersistencia();
+            AlumnoPersistencia.InscribirAlumno(idAlumno, idsCursos);
+
+
+        }
+
+        public List<AlumnoCondicionDto> ObtenerMateriasFinales(int idAlumno)
+        {
+            List<AlumnoCondicionDto> materiasenfinal = new List<AlumnoCondicionDto>();
+            List<AlumnoCondicionDto> alumnoCondicion = new List<AlumnoCondicionDto>();
+            alumnoCondicion = ObtenerAlumno(idAlumno);
+            foreach (var materia in alumnoCondicion)
+            {
+                if (materia.condicion == "FINAL")
+                {
+                    materiasenfinal.Add(materia);
+                }
+            }
+
+
+
+            return materiasenfinal;
+
+
+
+        }
+        public bool ValidarFinal(AlumnoCondicionDto MateriaFinalaInscribirse, List<AlumnoCondicionDto> listaMateriasInscriptas)
+        {
+            foreach (var materia in listaMateriasInscriptas)
+            {
+                if (materia.id == MateriaFinalaInscribirse.id)
+                {
+                    return true;
+                }
+            }
+
+
+            return false;
         }
     }
+
+}
+
+
+
