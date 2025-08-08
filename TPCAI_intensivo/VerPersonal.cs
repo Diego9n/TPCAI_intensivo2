@@ -19,6 +19,7 @@ namespace TPCAI_intensivo
         UsuarioDto UsuarioDto;
         List<int> cursosSeleccionadosIds = new List<int>();
         List<int> cursosAmodificar = new List<int>();
+        private bool cuitVaciarPrimeraVez = true;
         public VerPersonal(UsuarioDto usuarioDto)
         {
             InitializeComponent();
@@ -29,6 +30,8 @@ namespace TPCAI_intensivo
         {
             comboBox5.Items.Add("Modificar Personal");
             comboBox5.Items.Add("Eliminar Personal");
+            button3.Hide();
+            button2.Hide();
             groupBox2.Enabled = false;  
             groupBox1.Enabled = false;
             groupBox4.Enabled = false;
@@ -41,70 +44,14 @@ namespace TPCAI_intensivo
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            if (textBox7.Text == string.Empty)
-            {
-                MessageBox.Show("Debe seleccionar al menos un curso.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtCuit.Text))
-            {
-                MessageBox.Show("Debe completar los campos obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            string dni = txtDni.Text.Trim();
-
-            if (!long.TryParse(dni, out long dniNumerico))
-            {
-                MessageBox.Show("El DNI debe contener solo números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (dni.Length < 7 || dni.Length > 8)
-            {
-                MessageBox.Show("El DNI debe tener entre 7 y 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string antiguedadTexto = txtAntiguedad.Text.Trim();
-
-            if (!int.TryParse(antiguedadTexto, out int antiguedad) || antiguedad < 0)
-            {
-                MessageBox.Show("Ingrese una antigüedad válida (número entero mayor o igual a 0).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try { 
-            int idProfesor;
-            idProfesor = int.Parse(textBox1.Text);
-            GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
-            PersonalDtoRequest profesorDtoRequest = new PersonalDtoRequest();
-            profesorDtoRequest.Cursos = new List<int>();
-            profesorDtoRequest.Nombre = txtNombre.Text;
-            profesorDtoRequest.Apellido = txtApellido.Text;
-            profesorDtoRequest.Dni = txtDni.Text;
-            profesorDtoRequest.Cuit = txtCuit.Text;
-            profesorDtoRequest.Tipo = comboBox1.Text;
-                foreach (var curso in cursosAmodificar)
-                {
-                    profesorDtoRequest.Cursos.Add(curso);
-                }
-
-
-                gestorCRUDPersonal.ModificarPersonal(profesorDtoRequest, idProfesor);
-                limpiarDatos();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Se ha modificado correctamente pero da error 500 en el response { ex.Message }", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                limpiarDatos();
-                return;
-           
-            }
+          
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             label11.Text = "Espere a que se carguen los datos ...... (esto se debe a que se tiene que buscar los cursos en todos los cursos de todas las carreras)";
             label11.Show();
+            cuitVaciarPrimeraVez = true; 
             textBox7.Clear();
             this.Cursor = Cursors.WaitCursor;
             Application.DoEvents();
@@ -135,11 +82,9 @@ namespace TPCAI_intensivo
                 txtApellido.Text = profesor.Apellido;
                 txtDni.Text = profesor.Dni;
                 txtCuit.Text = profesor.Cuit;
-                comboBox1.Text = profesor.Tipo;
                 txtAntiguedad.Text = profesor.Antiguedad.ToString();
+                CargarTiposEnCombo(profesor.Tipo);
 
-
-               
                 List<int> cursosPersonal = gestor.CursosPersonal(idProfesor);
                 cursosAmodificar.Clear();
                 foreach (var curso in cursosPersonal)
@@ -153,10 +98,12 @@ namespace TPCAI_intensivo
                 if (comboBox5.Text == "Modificar Personal")
                 {
                     PrepararModificar();
+                    button2.Enabled = true; 
                 }
                 else if (comboBox5.Text == "Eliminar Personal")
                 {
                     PrepararEliminar();
+                    button3.Enabled = true;
                 }
 
                 ResetEstado(); 
@@ -232,22 +179,26 @@ namespace TPCAI_intensivo
             textBox7.Clear();
             txtDni.Clear();
             txtCuit.Clear();
-            comboBox1.Items.Clear();
+            button2.Enabled = false;
+            button3.Enabled = false;
             txtAntiguedad.Clear();  
             groupBox4.Enabled = false;  
             textBox2.Clear();
+            cuitVaciarPrimeraVez = true;
         }
         void PrepararModificar() 
         {
             GestorCarreras gestorCarreras = new GestorCarreras();
             List<CarreraDto> carreras = gestorCarreras.ObtenerCarreras();
+            comboBox2.Items.Clear();
             foreach (var carrera in carreras)
             {
                 comboBox2.Items.Add(carrera);
             }
             groupBox4.Text = "Datos a modificar";
-            comboBox1.Items.Clear();    
+           
             groupBox1.Enabled = true;
+            button2.Enabled = false ;
             groupBox2.Enabled = true;
             txtAntiguedad.ReadOnly = false;
             txtCuit.ReadOnly = false;
@@ -275,7 +226,7 @@ namespace TPCAI_intensivo
             comboBox1.Enabled = false;
             groupBox5.Enabled = false;  
             textBox6.Enabled = false;
-
+            button3.Enabled = false;
             button2.Hide();
             button3.Show();
 
@@ -419,6 +370,146 @@ namespace TPCAI_intensivo
             foreach (var curso in cursosAmodificar)
             {
                 textBox7.AppendText("ID Curso: " + curso + Environment.NewLine);
+            }
+        }
+        private void CargarTiposEnCombo(string tipoActual)
+        {
+            comboBox1.Items.Clear();
+
+            if (string.IsNullOrWhiteSpace(tipoActual))
+            {
+                tipoActual = "Administrativo";
+            }
+            else
+            {
+                tipoActual = tipoActual.Trim();
+            }
+
+            comboBox1.Items.Add(tipoActual);
+
+            string[] otrosTipos = { "PROFESOR","AYUDANTE", "AYUDANTE_AD_HONOREM" };
+
+            foreach (string tipo in otrosTipos)
+            {
+                // Compara ignorando mayúsculas y espacios
+                if (!string.Equals(tipo.Trim(), tipoActual, StringComparison.OrdinalIgnoreCase))
+                {
+                    comboBox1.Items.Add(tipo);
+                }
+            }
+
+            comboBox1.SelectedIndex = 0;
+        }
+
+        bool ValidarYFormatearCuit(ref string cuit)
+        {
+            
+            string cuitLimpio = cuit.Replace("-", "").Trim();
+
+            if (cuitLimpio.Length != 11 || !cuitLimpio.All(char.IsDigit))
+                return false;
+
+           
+            cuit = $"{cuitLimpio.Substring(0, 2)}-{cuitLimpio.Substring(2, 8)}-{cuitLimpio.Substring(10, 1)}";
+
+            return true;
+        }
+
+
+
+        private void txtCuit_Enter(object sender, EventArgs e)
+        {
+            if (cuitVaciarPrimeraVez)
+            {
+                txtCuit.Clear();
+                cuitVaciarPrimeraVez = false;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox7.Text == string.Empty)
+            {
+                MessageBox.Show("Debe seleccionar al menos un curso.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtCuit.Text))
+            {
+                MessageBox.Show("Debe completar los campos obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            foreach (char c in txtNombre.Text)
+            {
+                if (!char.IsLetter(c) && c != ' ')
+                {
+                    MessageBox.Show("El Nombre solo debe contener letras.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+
+            foreach (char c in txtApellido.Text)
+            {
+                if (!char.IsLetter(c) && c != ' ')
+                {
+                    MessageBox.Show("El Apellido solo debe contener letras.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            string dni = txtDni.Text.Trim();
+
+            if (!long.TryParse(dni, out long dniNumerico))
+            {
+                MessageBox.Show("El DNI debe contener solo números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (dni.Length < 7 || dni.Length > 8)
+            {
+                MessageBox.Show("El DNI debe tener entre 7 y 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string antiguedadTexto = txtAntiguedad.Text.Trim();
+
+            if (!int.TryParse(antiguedadTexto, out int antiguedad) || antiguedad < 0)
+            {
+                MessageBox.Show("Ingrese una antigüedad válida (número entero mayor o igual a 0).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string cuitIngresado = txtCuit.Text;
+            if (!ValidarYFormatearCuit(ref cuitIngresado))
+            {
+                MessageBox.Show("CUIT inválido. Debe contener 11 números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                int idProfesor;
+                idProfesor = int.Parse(textBox1.Text);
+                GestorCRUDPersonal gestorCRUDPersonal = new GestorCRUDPersonal();
+                PersonalDtoRequest profesorDtoRequest = new PersonalDtoRequest();
+                profesorDtoRequest.Cursos = new List<int>();
+                profesorDtoRequest.Nombre = txtNombre.Text;
+                profesorDtoRequest.Apellido = txtApellido.Text;
+                profesorDtoRequest.Dni = txtDni.Text;
+                profesorDtoRequest.Cuit = txtCuit.Text;
+                profesorDtoRequest.Tipo = comboBox1.Text;
+                foreach (var curso in cursosAmodificar)
+                {
+                    profesorDtoRequest.Cursos.Add(curso);
+                }
+
+
+                gestorCRUDPersonal.ModificarPersonal(profesorDtoRequest, idProfesor);
+                limpiarDatos();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Se ha modificado correctamente pero da error 500 en el response {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limpiarDatos();
+                return;
+
             }
         }
     }
