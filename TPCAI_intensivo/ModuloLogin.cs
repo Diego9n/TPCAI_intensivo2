@@ -35,7 +35,7 @@ namespace TPCAI_intensivo
             string contraseña = txtContraseña.Text;
 
             
-          /* if (usuario.Length != 8)
+           if (usuario.Length != 8)
             {
                 MessageBox.Show("El nombre de usuario debe tener exactamente 8 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -74,7 +74,7 @@ namespace TPCAI_intensivo
             {
                 MessageBox.Show("La contraseña debe contener al menos una letra y un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }*/
+            }
             try {
                
                 validaringresousuario = validaciones.ValidarIngresoUsuario(usuario); 

@@ -74,9 +74,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(114, 115);
+            this.button2.Location = new System.Drawing.Point(286, 647);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(144, 23);
+            this.button2.Size = new System.Drawing.Size(157, 23);
             this.button2.TabIndex = 19;
             this.button2.Text = "Aceptar Modificaciones";
             this.button2.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(448, 641);
+            this.button3.Location = new System.Drawing.Point(286, 647);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(157, 23);
             this.button3.TabIndex = 24;
@@ -373,7 +373,6 @@
             // 
             this.groupBox5.Controls.Add(this.textBox2);
             this.groupBox5.Controls.Add(this.button6);
-            this.groupBox5.Controls.Add(this.button2);
             this.groupBox5.Location = new System.Drawing.Point(407, 311);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(334, 198);
@@ -440,6 +439,7 @@
             this.ClientSize = new System.Drawing.Size(887, 729);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button5);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
