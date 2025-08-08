@@ -140,7 +140,7 @@
             // 
             // txtEliminarAlumno
             // 
-            this.txtEliminarAlumno.Location = new System.Drawing.Point(113, 320);
+            this.txtEliminarAlumno.Location = new System.Drawing.Point(8, 320);
             this.txtEliminarAlumno.Name = "txtEliminarAlumno";
             this.txtEliminarAlumno.Size = new System.Drawing.Size(165, 23);
             this.txtEliminarAlumno.TabIndex = 10;
@@ -243,7 +243,6 @@
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Seleccione Accion";
-        
             // 
             // VerAlumno
             // 

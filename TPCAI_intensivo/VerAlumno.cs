@@ -30,6 +30,24 @@ namespace TPCAI_intensivo
                 MessageBox.Show("Debe completar Nombre, Apellido");
                 return;
             }
+            foreach (char c in txtNombre.Text)
+            {
+                if (!char.IsLetter(c) && c != ' ')
+                {
+                    MessageBox.Show("El Nombre solo debe contener letras.");
+                    return;
+                }
+            }
+
+            // Validar que solo haya letras y espacios en Apellido
+            foreach (char c in txtApellido.Text)
+            {
+                if (!char.IsLetter(c) && c != ' ')
+                {
+                    MessageBox.Show("El Apellido solo debe contener letras.");
+                    return;
+                }
+            }
             if (clbCarreras.CheckedItems.Count == 0)
             {
                 MessageBox.Show("Debe seleccionar al menos una carrera.");
@@ -87,6 +105,7 @@ namespace TPCAI_intensivo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {            
+          
             if (cmbAccion.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe seleccionar una acción.");
@@ -96,6 +115,11 @@ namespace TPCAI_intensivo
             if (string.IsNullOrWhiteSpace(txtId.Text))
             {
                 MessageBox.Show("Debe ingresar un ID de alumno.");
+                return;
+            }
+            if (!int.TryParse(txtId.Text, out _))
+            {
+                MessageBox.Show("El ID de alumno debe ser un número válido.");
                 return;
             }
             try { 

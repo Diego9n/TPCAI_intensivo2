@@ -58,13 +58,13 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.txtAntiguedad = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -174,7 +174,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(286, 647);
+            this.button3.Location = new System.Drawing.Point(361, 647);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(157, 23);
             this.button3.TabIndex = 24;
@@ -367,7 +367,34 @@
             this.groupBox4.TabIndex = 52;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupbox4";
-          
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBox2);
+            this.groupBox5.Controls.Add(this.button6);
+            this.groupBox5.Location = new System.Drawing.Point(407, 311);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(334, 198);
+            this.groupBox5.TabIndex = 55;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Ingrese el curso a eliminar";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(37, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 53;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(37, 58);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 54;
+            this.button6.Text = "Eliminar";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // txtAntiguedad
             // 
@@ -403,34 +430,6 @@
             this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 53;
             this.label11.Text = "label11";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(37, 20);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 53;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(37, 58);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 54;
-            this.button6.Text = "Eliminar";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.textBox2);
-            this.groupBox5.Controls.Add(this.button6);
-            this.groupBox5.Location = new System.Drawing.Point(407, 311);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(334, 198);
-            this.groupBox5.TabIndex = 55;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Ingrese el curso a eliminar";
             // 
             // VerPersonal
             // 
